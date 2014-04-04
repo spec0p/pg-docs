@@ -1,1 +1,6 @@
-_site/
+bower_components
+node_modules
+.sass-cache
+css
+_site
+*.DS_Store

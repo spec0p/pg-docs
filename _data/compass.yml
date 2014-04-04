@@ -1,0 +1,13 @@
+---
+require:
+- jekyll-compass
+import_paths:
+- bower_components/foundation/scss
+
+# Should use the same paths as defined in ../config.rb:
+#project_path: ./
+http_path: /
+css_dir: css
+sass_dir: _sass
+images_dir: img
+javascripts_dir: js

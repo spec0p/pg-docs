@@ -1,0 +1,29 @@
+<ul class="side-nav">
+    <li class="heading">Sections</li>
+
+    {% if page.url == '/index.html' %}
+        <li class="active"><a href="/">Getting started</a></li>
+    {% else %}
+        <li><a href="/">Getting started</a></li>
+    {% endif %}
+
+    {% if page.url == '/install.html' %}
+        <li class="active"><a href="/install.html">Install Phune Gaming</a></li>
+    {% else %}
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    {% endif %}
+
+    {% if page.url == '/sdk-js.html' %}
+        <li class="active"><a href="/sdk-js.html">JavaScript SDK</a></li>
+    {% else %}
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    {% endif %}
+
+    {% if page.url == '/server-rules.html' %}
+        <li class="active"><a href="/server-rules.html">Server rules</a></li>
+    {% else %}
+        <li><a href="/server-rules.html">Server rules</a></li>
+    {% endif %}
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>

@@ -1,0 +1,11 @@
+title: Phune Gaming
+description: Tutorial to walk you through the process of creating a HTML5 game and integrating it with the Phune Gaming platform.
+baseurl: /pg-docs
+
+markdown: redcarpet
+pygments: true
+encoding: UTF-8
+
+exclude: [bower.json, config.rb]
+gems:
+- jekyll-compass

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% if page.description %}
+            <meta name="description" content="{{ page.description }}" />
+        {% else %}
+            <meta name="description" content="{{ site.description }}" />
+        {% endif %}
+
+        {% if page.title %}
+            <title>{{ page.title }} | {{ site.title }}</title>
+        {% else %}
+            <title>{{ site.title }}</title>
+        {% endif %}
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/app.css" />
+
+        <!-- Custom JS -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        {% include topbar.html %}
+
+        {% include header.html %}
+
+        <main class="row">
+            <nav class="large-3 medium-4 columns">
+                <div class="sidebar show-for-small-only">
+                    {% include sidebar.html %}
+                </div>
+                <div class="sidebar show-for-medium-up" data-magellan-expedition="fixed">
+                    {% include sidebar.html %}
+                </div>
+            </nav>
+            <section class="large-9 medium-8 columns">
+                <h2>{{ page.title }}</h2>
+                {% if page.description %}
+                    <h3 class="subheader">{{ page.description }}</h3>
+                {% endif %}
+
+                {{ content }}
+            </section>
+        </main>
+
+        {% include footer.html %}
+
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/foundation/js/foundation.min.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
