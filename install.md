@@ -20,7 +20,7 @@ description: Download and configure everything you need to get started
 <a name="request"></a>
 <h3 data-magellan-destination="request">Request a developer's account</h3>
 
-Send and email to [pg-dev@present-technologies.com](mailto:pg-dev@present-technologies.com) with the following information:
+Send an email to [pg-dev@present-technologies.com](mailto:pg-dev@present-technologies.com) with the following information:
 
 ```
 Name: "The name of the game",
@@ -28,25 +28,32 @@ Description: "The description of the game"
 Bot: "Whether your game support bots or not"
 ```
 
-In response you will receive a new `id` for your game and the credentials for a SFTP account that you will need later to deploy the game rules on the server. Used, for instance, to validate moves or generate moves for a bot.
+In response you will receive an `id` for your game and the credentials for an SFTP account that you will need later to deploy the game rules on the server. This is used to validate moves or to generate moves for a bot.
 
-**Note:** you can update the game details any time by sending a new email and refering the game `id`.
+**Note:** You can always update the game details by sending us a new email and refering the game `id`.
 
 <hr />
 
 <a name="download"></a>
-<h3 data-magellan-destination="download">Download Phune Gaming platform</h3>
+<h3 data-magellan-destination="download">Download Phune Gaming</h3>
 
 To download the Phune Gaming client platform you must accept the [Present Technologies License Agreement for Phune Gaming](javascript:alert('Not yet available!'\)).
 
 <input id="accept-license" type="checkbox" /><label for="accept-license">Accept License Agreement</label>  
-<a id="download-platform" href="javascript:alert('Not yet available!')">Download Phune Gaming platform</a>
+<a id="download-platform" href="javascript:alert('Not yet available!')">Download the Phune Gaming client platform</a>
 
 <hr />
 
 <a name="install"></a>
-<h3 data-magellan-destination="install">Install Phune Gaming platform</h3>
+<h3 data-magellan-destination="install">Install Phune Gaming</h3>
 
-Unzip the platform into a local folder. Inside, create a new folder `game` and inside `game` another one named after the `id` you got from us in the email.
+To install the Phune Gaming client platform, follow the steps below:
 
-Finally, create an `index.html` file and include a `<script>` tag with our SDK. Please move to the next section, [SDK for JavaScript](/sdk-js.html), to find how to install and use it in your game.
+* Unzip the platform into a local folder. 
+* Inside the platform create a new folder called `game`. 
+* Inside `game` create another folder named after the `id` from our email. The `id` folder is where your game contents will reside, feel free to structure it the way you want.
+* Finally, create an `index.html` file and include a `<script>` tag with our JavaScript SDK. 
+
+<hr />
+
+What's next? Go to our [JavaScript SDK](/sdk-js.html) documentation to start developing your game.
