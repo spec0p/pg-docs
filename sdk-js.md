@@ -1,6 +1,6 @@
 ---
 layout: default
-title: SDK for JavaScript
+title: JavaScript SDK
 description: Build HTML5 games for the Phune Gaming platform
 ---
 
@@ -41,7 +41,7 @@ You are now ready to start your game implementation. Please proceed to the <a hr
 <a name="getting-started"></a>
 <h3 data-magellan-destination="getting-started">Getting Started</h3>
 
-The SDK must be initialized by calling `PG.init` and defining the callback functions that will handle all the matchmaking state changes and game events sent by the platform to your game:
+Initialize the JavaScript SDK by calling `PG.init` and defining the callback functions which will handle all matchmaking states and the game events sent to your game by the platform:
 
 ```js
 PG.init({
@@ -109,7 +109,7 @@ onMatchStart: function(playerIdToPlayNext, timeToPlay) {
 
 #### Moves handling and validation
 
-If a move is considered valid from the server-side rules, the server will respond with a confirmation message that will be handled by the `onMoveValid` callback function. Moves performed by the opponent will also be handled by this callback function.
+If a move is considered valid by the server-side rules, the server will respond with a confirmation message that will be handled by the `onMoveValid` callback function. Moves performed by the opponent will also be handled by this callback function.
 
 If a move ends the game, the `gameResults` parameter will indicate how the game ended. Possible values are 'won', 'lost', and 'draw'.
 
@@ -169,7 +169,7 @@ onMatchEnd: function(gameResults) {
 
 #### TV remote control input handling
 
-On TV environment, the information of remote control buttons that were pressed, are sent to the game to be handled by the `onKeyPress` callback function. Possible values are: 'left', 'right', 'up', 'down' and 'enter'.
+On TV environment, the `onKeyPress` callback handles the remote control keys that were pressed. The possible values are: 'left', 'right', 'up', 'down' and 'enter'.
 
 ```js
 onKeyPress: function(key) {
@@ -258,4 +258,6 @@ The game must include a visual component allowing a user to call for the platfor
 PG.showMenu();
 ```
 
-Please move into the next section, [Server rules](/server-rules.html), to find how to do your game validations on the server.
+<hr />
+
+What's next? Go to [Server rules](/server-rules.html) to find how to do your game validations on the server.
