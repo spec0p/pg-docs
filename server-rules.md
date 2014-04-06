@@ -20,7 +20,7 @@ description: Do your validations on the server
 <a name="getting-started"></a>
 <h3 data-magellan-destination="getting-started">Getting Started</h3>
 
-Phune Gaming requires the games to have a server-side component (aka server-side rules) which manages the game state changes and validates the moves. This component must provide the following functionality:
+Phune Gaming requires the games to have a server-side component (aka server-side rules) which manages the game states, validates the players' moves and optionally generates the moves for a bot. This component must provide the following functionality:
 
 * Create the initial game state
 * Evaluate moves
@@ -52,7 +52,7 @@ When a new match is created, a representation of the game initial state must be 
 </dl>
 <div class="tabs-content">
     <div class="content active" id="javascript-1">
-<p>The <code>createStateForNewMatch</code> function will be called to return the game state as a string. It should contain the players information, the id of the next player to play, the id of the next move and any other information relevant to the game. The players parameter is an array, which contains information about the players. Each element in the players array is an array for a single player, such as the first position holds the player's id and the second position holds a boolean value indicating whether the player is a bot or not.</p>
+<p>The <code>createStateForNewMatch</code> function will be called to return the game state as a string containing the players information, the id of the next player to play, the id of the next move and any other information relevant to the game. The <code>players</code> parameter is an array, which contains information about the players. Each element in the players array is an array for a single player, such as the first position holds the player's id and the second position holds a boolean value indicating whether the player is a bot or not.</p>
 
 {% highlight js %}
 var createStateForNewMatch = function(players, nextPlayerId) {
