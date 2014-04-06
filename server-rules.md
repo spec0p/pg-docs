@@ -351,7 +351,7 @@ public EvaluationResult evaluateMessage(Message message) {
 
 #### Get info about the ongoing match
 
-The game state kept on the game rules objects, should provide the Phune Gaming platform with the information it requires (i.e. the id of the next player to play and the id of the next expected move).
+The game state, stored in the server-side rules objects, should provide the Phune Gaming platform with the information it requires (i.e. the id of the next player to play and the id of the next expected move).
 
 <dl class="tabs" data-tab>
     <dd class="active"><a href="#javascript-5">JavaScript</a></dd>
