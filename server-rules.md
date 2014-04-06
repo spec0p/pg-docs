@@ -19,7 +19,15 @@ description: Do your validations on the server
 <a name="getting-started"></a>
 <h3 data-magellan-destination="getting-started">Getting Started</h3>
 
-Phune Gaming requires the games to have a server-side component (aka server-side rules) which manages the game states, validates the players' moves and optionally generates the moves for a bot. This component must provide the following functionality:
+Phune Gaming requires the games to have a server-side component (aka server-side rules) which manages the game states, validates the players' moves and optionally generates the moves for a bot. 
+
+The server-side rules can be written in JavaScript, Java or Drools, and must implement our <a href="#spi-docs">SPI</a> for the particular programming language:
+
+* JavaScript: [JavaScriptRules](/rules/JavaScriptRules.html)
+* Java: [JavaRules](/rules/JavaRules.html)
+* Drools: [DroolsRules](/rules/DroolsRules.html)
+
+The server-side rules for your game must provide the following functionality:
 
 * Create the initial game state
 * Evaluate moves
@@ -27,13 +35,9 @@ Phune Gaming requires the games to have a server-side component (aka server-side
 * Evaluate game-specific messages <sup>optional</sup>
 * Get info about the ongoing match
 
-The server-side rules can be written in JavaScript, Java or Drools, and must implement the interface specified for the particular programming language:
+Follow the SPI documentation below for implementation details.
 
-* JavaScript: [JavaScriptRules](/rules/JavaScriptRules.html)
-* Java: [JavaRules](/rules/JavaRules.html)
-* Drools: [DroolsRules](/rules/DroolsRules.html)
-
-The [JavaScript implementation of the rules used on the sever for the game Tic-Tac-Toe](https://github.com/phune-gaming/pg-tic-tac-toe/blob/master/src/js/gameRules.js) is freely available on GitHub.
+**Note:** The [JavaScript implementation of the server-side rules for the Tic-Tac-Toe game](https://github.com/phune-gaming/pg-tic-tac-toe/blob/master/src/js/gameRules.js) is freely available on GitHub.
 
 <hr />
 
@@ -53,7 +57,7 @@ When a new match is created, a representation of the game initial state must be 
 </dl>
 <div class="tabs-content">
     <div class="content active" id="javascript-1">
-<p>The <code>createStateForNewMatch</code> function will be called to return the game state as a string containing the players information, the id of the next player to play, the id of the next move and any other information relevant to the game. The <code>players</code> parameter is an array, which contains information about the players. Each element in the players array is an array for a single player, such as the first position holds the player's id and the second position holds a boolean value indicating whether the player is a bot or not.</p>
+<p>The <code>createStateForNewMatch</code> function will be called to return the game state as a string containing the players information, the id of the next player to play, the id of the next move and any other information relevant to the game. The <code>players</code> parameter is an array with information about the players. Each element in the <code>players</code> array is an array for one player, such as the first position holds the player's id and the second position holds a boolean value indicating whether the player is a bot or not.</p>
 
 {% highlight js %}
 var createStateForNewMatch = function(players, nextPlayerId) {
@@ -151,7 +155,7 @@ var evaluateMove = function(state, playerId, moveId, content) {
 <p><strong>Note:</strong> The parameters <code>playerId</code> and <code>moveId</code> are automatically validated by the server before calling this function.</p>
     </div>
     <div class="content" id="java-2">
-<p>The method responsible for evaluating and executing (if applicable) a move sent by a client is named <code>evaluateMove</code>. It receives a <code>Move</code> entity and must return an <code>EvaluationResult</code> object instantiated with info based on the result from the move evaluation.</p>
+<p>The method responsible for evaluating and executing (if applicable) a move sent by a client is named <code>evaluateMove</code>. It receives a <code>Move</code> entity and must return an <code>EvaluationResult</code> object instantiated with information based on the result from the move evaluation.</p>
 
 {% highlight java %}
 @Override
@@ -265,7 +269,7 @@ If bots are supported by a game, their moves must be generated.
 </dl>
 <div class="tabs-content">
     <div class="content active" id="javascript-3">
-<p>The <code>createBotMove</code> function will be called to generate a valid move for the bot. It returns an object containing the content of the move and the state of the game as strings. The <code>evaluateMove</code> function will be called automatically with the generated bot move, as such, unlike the Java implementation, this move does not need to be applied to the game state.</p>
+<p>The <code>createBotMove</code> function will be called to generate a valid move for the bot. It returns an object containing the content of the move and the state of the game as strings. The <code>evaluateMove</code> function will be called automatically with the generated bot move, thus unlike the Java implementation, this move does not need to be applied to the game state.</p>
 
 {% highlight js %}
 var createBotMove = function(state, playerId) {
