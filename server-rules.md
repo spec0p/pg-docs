@@ -11,7 +11,6 @@ description: Do your validations on the server
         <dt>Jump to:</dt>
         <dd data-magellan-arrival="getting-started"><a href="#getting-started">Getting Started</a></dd>
         <dd data-magellan-arrival="spi-docs"><a href="#spi-docs">SPI documentation</a></dd>
-        <dd data-magellan-arrival="example"><a href="#example">Example</a></dd>
     </dl>
 </div>
 
@@ -28,11 +27,13 @@ Phune Gaming requires the games to have a server-side component (aka server-side
 * Evaluate game-specific messages <sup>optional</sup>
 * Get info about the ongoing match
 
-The server-side rules can be written in JavaScript, Java or Drools, and must implement the interface specified for the particular (programming) language:
+The server-side rules can be written in JavaScript, Java or Drools, and must implement the interface specified for the particular programming language:
 
-* JavaScript: [JavaScriptRules](/assets/code/JavaScriptRules.html)
-* Java: [JavaRules](/assets/code/JavaRules.html)
-* Drools: [DroolsRules](/assets/code/DroolsRules.html)
+* JavaScript: [JavaScriptRules](/rules/JavaScriptRules.html)
+* Java: [JavaRules](/rules/JavaRules.html)
+* Drools: [DroolsRules](/rules/DroolsRules.html)
+
+The [JavaScript implementation of the rules used on the sever for the game Tic-Tac-Toe](https://github.com/phune-gaming/pg-tic-tac-toe/blob/master/src/js/gameRules.js) is freely available on GitHub.
 
 <hr />
 
@@ -399,14 +400,3 @@ end
 {% endhighlight %}
     </div>
 </div>
-
-<hr />
-
-<a name="example"></a>
-<h3 data-magellan-destination="example">Example</h3>
-
-For a complete example, please find below the server-side rules used for the Tic-Tac-Toe game implementation:
-
-* [JavaScript](code/tictactoe-rules.js)
-* [Java](code/tictactoe-rules-src.zip)
-* [Drools](code/tictactoe-rules.drl)

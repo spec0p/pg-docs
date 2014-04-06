@@ -12,19 +12,21 @@ To build the site locally please read the following subsections.
 
 This documentation is built with [Jekyll](http://jekyllrb.com/). It you don't have Jekyll installed please read the [Jekyll Installation](http://jekyllrb.com/docs/installation/) page to install it, or alternatively, read [How to Run Jekyll on Windows](https://github.com/juthilo/run-jekyll-on-windows/).
 
-It also uses [Foundation](http://foundation.zurb.com/) as the base front-end framework.  Please read [Getting Started With Sass](http://foundation.zurb.com/docs/sass.html) or see the video [Getting Started with Sass](http://foundation.zurb.com/learn/video-started-with-foundation.html) to find out how to start a project with Foundation and Sass.
+It also uses [Foundation](http://foundation.zurb.com/) with [Compass](http://compass-style.org/) as the base front-end framework. In order to build the project please install the projects below.
 
-Foundation with Compass requires you to install the following projects:
+Install Foundation dependency with [Bower](http://bower.io):
 
-* Git [[Linux/UNIX](http://git-scm.com/), [Windows](http://msysgit.github.io/)]
-* Ruby 1.9+ [[Linux/UNIX](https://www.ruby-lang.org/en/), [Windows](http://rubyinstaller.org/)]
-* [Node.js](http://nodejs.org)
-* [Compass](http://compass-style.org/): `gem install compass`
-* [Bower](http://bower.io): `npm install -g bower`
+```
+$ bower install
+```
 
-The following plugin have been used with Jekyll:
+Install the following [Ruby Gems](https://rubygems.org/):
 
-* [Compass integration for Jekyll](https://github.com/mscharley/jekyll-compass)
+```
+$ gem install sass --version "3.2.10"
+$ gem install compass --version "0.12.2"
+$ gem install jekyll-compass
+```
 
 ### Build
 
