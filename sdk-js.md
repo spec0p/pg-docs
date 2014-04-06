@@ -17,10 +17,12 @@ description: Build HTML5 games for the Phune Gaming platform
 
 <hr />
 
+Before you start developing your game you need to install the JavaScript SDK.
+
 <a name="install"></a>
 <h3 data-magellan-destination="install">Install</h3>
 
-Install the SDK with [Bower](http://bower.io/) from the command-line:
+Install the JavaScript SDK with [Bower](http://bower.io/) from the command-line:
 
 ```
 bower install phune-gaming-sdk
@@ -36,7 +38,7 @@ Alternatively, for those who do not use Bower, you can directly [download the Ph
 
 You are now ready to start your game implementation. Please proceed to the <a href="#getting-started">Getting Started</a> sub-section to find which callbacks your game needs to implement to process the messages sent by the platform, and to the <a href="#public-api">Public API</a> sub-section to find out which methods you have available to send the game messages (e.g. moves) to the server.
 
-The [implementation of the game Tic-Tac-Toe](https://github.com/phune-gaming/pg-tic-tac-toe) is freely available on GitHub.
+**Note:** The [implementation of the game Tic-Tac-Toe](https://github.com/phune-gaming/pg-tic-tac-toe) is freely available on GitHub.
 
 <hr />
 
@@ -77,11 +79,11 @@ PG.init({
 });
 ```
 
-Please find below a detailed description for each callback.
+The detailed description for each callback is presented below.
 
 #### Match prepare
 
-During the match preparation phase, the game should build the user interface and get ready to start playing. It is provided with the details of the player and opponent, and in which type of device the game is running ('mobile' or 'tv').
+During the match preparation state, the game should build the user interface and get ready to start playing. It is provided with the details of the player and opponent, and in which type of device the game is running ('mobile' or 'tv').
 
 ```js
 onMatchPrepare: function(player, opponent, deviceType) {
@@ -101,7 +103,7 @@ onGameLobby: function(allowedTime) {
 
 #### Match start
 
-When the match starts the game will be informed of which player should start playing and the time allowed for each player to make a move.
+When the match starts, the game will be informed of which player should play first and the time allowed for each player to make a move.
 
 ```js
 onMatchStart: function(playerIdToPlayNext, timeToPlay) {
@@ -204,7 +206,7 @@ The Phune Gaming SDK provides an [API](http://phune-gaming.github.io/pg-sdk-js/)
 
 #### Match start
 
-During the match preparation phase (`onMatchPrepare` callback) the game must inform the platform when it is ready to be shown to the user by calling `PG.ready`.
+During the match preparation state (`onMatchPrepare` callback) the game must inform the platform when it is ready to be shown to the user by calling `PG.ready`.
 
 ```js
 PG.ready();
@@ -212,7 +214,7 @@ PG.ready();
 
 #### Game lobby
 
-If the game is configured on the server to require a configuration phase, the (`onGameLobby` callback) will be called to allow the game to send the required configuration back to the server by calling `PG.serverMessage`. When finished, it must inform the platform that the match is ready to start by calling `PG.exitGameLobby`.
+If the game is configured on the server to require a configuration state, the `onGameLobby` callback will be called to allow the game to send the required configuration back to the server by calling `PG.serverMessage`. When the match is ready to start the game must inform the platform by calling `PG.exitGameLobby`.
 
 ```js
 PG.exitGameLobby();
@@ -243,7 +245,7 @@ PG.playerMessage(
 
 #### Perform a move
 
-If it is the current player turn, the game should allow the player to make a move and then send it to the platform. Optionally, you can specify a validate function that accepts the move object as a parameter and validates it before sending it to the server. This prevents additional round-trips to the server for invalid moves, thus making the game a lot more responsive.
+If it is the current player's turn, the game should allow the player to make a move and then send it to the platform. Optionally, you can specify a validate function that accepts the move object as a parameter and validates it before sending it to the server. This prevents additional round-trips to the server for invalid moves, thus making the game a lot more responsive.
 
 ```js
 PG.move(
@@ -254,7 +256,7 @@ PG.move(
 
 #### Show the platform menu
 
-The game must include a visual component allowing a user to call for the platform menu. In order to show the menu that component must call the function `PG.showMenu`.
+The game must include a visual component which allows the user to have access to the platform menu. In order to show the menu this component must call the function `PG.showMenu`.
 
 ```js
 PG.showMenu();
