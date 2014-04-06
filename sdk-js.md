@@ -36,6 +36,8 @@ Alternatively, for those who do not use Bower, you can directly [download the Ph
 
 You are now ready to start your game implementation. Please proceed to the <a href="#getting-started">Getting Started</a> sub-section to find which callbacks your game needs to implement to process the messages sent by the platform, and to the <a href="#public-api">Public API</a> sub-section to find out which methods you have available to send the game messages (e.g. moves) to the server.
 
+The [implementation of the game Tic-Tac-Toe](https://github.com/phune-gaming/pg-tic-tac-toe) is freely available on GitHub.
+
 <hr />
 
 <a name="getting-started"></a>
