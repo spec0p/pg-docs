@@ -8,7 +8,7 @@ Welcome to the Phune Gaming game development documentation. Here you will find e
 
 <h3>What is Phune Gaming?</h3>
 
-Phune Gaming is a multiplayer gaming platform which allows casual games to be played online against real users. The Phune Gaming platform is composed of three main components:
+Phune Gaming is a social multiplayer HTML5 gaming platform which allows casual games to be played online against real users. The Phune Gaming platform is composed of three main components:
 
 * A highly scalable and performant application server
 * The Phune Gaming client platform
