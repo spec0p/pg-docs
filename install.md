@@ -17,6 +17,8 @@ description: Download and configure everything you need to get started
 
 <hr />
 
+To download and install the Phune Gaming client platform complete the three steps bellow:
+
 <a name="request"></a>
 <h3 data-magellan-destination="request">Request a developer's account</h3>
 
@@ -28,7 +30,7 @@ Description: "The description of the game"
 Bot: "Whether your game support bots or not"
 ```
 
-In response you will receive an `id` for your game and the credentials for an SFTP account that you will need later to deploy the game rules on the server. This is used to validate moves or to generate moves for a bot.
+In response you will receive an `id` for your game and the credentials for an SFTP account that you will need later to deploy the server-side rules on the server. The rules are used to manage the game states, to validate players' moves or to generate moves for a bot.
 
 **Note:** You can always update the game details by sending us a new email and refering the game `id`.
 
@@ -47,7 +49,7 @@ To download the Phune Gaming client platform you must accept the [Present Techno
 <a name="install"></a>
 <h3 data-magellan-destination="install">Install Phune Gaming</h3>
 
-To install the Phune Gaming client platform, follow the steps below:
+Install the Phune Gaming client platform by following the steps below:
 
 * Unzip the platform into a local folder. 
 * Inside the platform create a new folder called `game`. 
