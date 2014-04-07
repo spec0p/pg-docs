@@ -6,6 +6,6 @@ markdown: redcarpet
 pygments: true
 encoding: UTF-8
 
-exclude: [bower.json, config.rb]
+exclude: [bower.json, config.rb, README.md]
 gems:
 - jekyll-compass
