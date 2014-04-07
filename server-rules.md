@@ -23,9 +23,9 @@ Phune Gaming requires the games to have a server-side component (aka server-side
 
 The server-side rules can be written in JavaScript, Java or Drools, and must implement our interface for the particular programming language:
 
-* JavaScript: [JavaScriptRules](/rules/JavaScriptRules.html)
-* Java: [JavaRules](/rules/JavaRules.html)
-* Drools: [DroolsRules](/rules/DroolsRules.html)
+* JavaScript: [JavaScriptRules](rules/JavaScriptRules.html)
+* Java: [JavaRules](rules/JavaRules.html)
+* Drools: [DroolsRules](rules/DroolsRules.html)
 
 The server-side rules for your game must provide the following functionality:
 

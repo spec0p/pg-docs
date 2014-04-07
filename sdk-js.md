@@ -265,4 +265,4 @@ PG.showMenu();
 
 <hr />
 
-What's next? Go to [Server rules](/server-rules.html) to find out how to do your game validations on the server.
+What's next? Go to [Server rules](server-rules.html) to find out how to do your game validations on the server.

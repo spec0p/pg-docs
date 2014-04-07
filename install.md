@@ -58,4 +58,4 @@ Install the Phune Gaming client platform by following the steps below:
 
 <hr />
 
-What's next? Go to our [JavaScript SDK](/sdk-js.html) documentation to start developing your game.
+What's next? Go to our [JavaScript SDK](sdk-js.html) documentation to start developing your game.
