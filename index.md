@@ -20,7 +20,7 @@ Phune Gaming supports multiple platforms including desktop, mobile and TV. Devel
 
 <h3>What knowledge do I need?</h3>
 
-To develop a game for Phune Gaming you will need to build two essential components: the game itself and server-side rules. For the game you can leverage your HTML, CSS and JavaScript skills and you are free to use your favorite JavaScript game engine. The server-side rules are needed to manage the game states and validate the players' moves. The server-side rules can be written in JavaScript, Java or Drools.
+To develop a game for Phune Gaming you will need to build two essential components: the game itself and server-side rules. For the game you can use your HTML, CSS and JavaScript skills and, if you prefer, you are free to use your favorite JavaScript game engine. The server-side rules are needed to manage the game states and validate the players' moves. The server-side rules can be written in JavaScript, Java or Drools.
 
 <h3>How to submit a game?</h3>
 
@@ -56,7 +56,8 @@ Alongside the documentation, feel free to have a look at the [Tic-Tac-Toe source
 
 Once the game is ready, send us an email to [pg-dev@present-technologies.com](mailto:pg-dev@present-technologies.com) with the two required components for a review and we will give you our feedback.
 
-Good luck!
+Good luck! <br />
+Present Technologies
 
 <hr />
 

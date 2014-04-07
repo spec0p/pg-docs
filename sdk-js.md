@@ -16,10 +16,11 @@ description: Build HTML5 games for the Phune Gaming platform
 </div>
 
 <hr />
-<a name="install"></a>
+
 
 Before you start developing your game you need to install the JavaScript SDK.
 
+<a name="install"></a>
 <h3 data-magellan-destination="install">Install</h3>
 
 Install the JavaScript SDK with [Bower](http://bower.io/) from the command-line:
@@ -133,7 +134,7 @@ onMoveInvalid: function(playerIdWhoSentTheMove, playerIdToPlayNext) {
 
 #### Handle messages from the server
 
-Responses to messages sent to the server will be processed by the `onServerMatch` callback function.
+Responses to messages sent to the server will be processed by the `onServerMessage` callback function.
 
 ```js
 onServerMessage: function(playerIdWhoSentTheMessage, messageDetails, messageResults) {
@@ -153,7 +154,7 @@ onPlayerMessage: function(messageDetails) {
 
 #### Match end
 
-When the game ends, the `onMatchEnd` callback function is called with the end condition. Possible values are 'won', 'lost', and 'draw'.
+When the game is over, the `onMatchEnd` callback function is called with the game result. Possible values are 'won', 'lost', and 'draw'.
 
 ```js
 onMatchEnd: function(gameResults) {
@@ -202,7 +203,7 @@ onKeyPress: function(key) {
 <a name="public-api"></a>
 <h3 data-magellan-destination="public-api">Public API</h3>
 
-The Phune Gaming SDK provides an [API](http://phune-gaming.github.io/pg-sdk-js/) with the public methods as detailed below.
+The Phune Gaming SDK provides an [API](http://phune-gaming.github.io/pg-sdk-js/) which allows the game to send messages to the platform and to the server.
 
 #### Match start
 
@@ -214,7 +215,7 @@ PG.ready();
 
 #### Game lobby
 
-If the game is configured on the server to require a configuration state, the `onGameLobby` callback will be called to allow the game to send the required configuration back to the server by calling `PG.serverMessage`. When the match is ready to start the game must inform the platform by calling `PG.exitGameLobby`.
+If the game is configured on the server to require a configuration state, the `onGameLobby` callback will be called to allow the game to send the required configuration back to the server by calling `PG.serverMessage`. When the match is ready to start, the game must inform the platform by calling `PG.exitGameLobby`.
 
 ```js
 PG.exitGameLobby();
@@ -222,7 +223,7 @@ PG.exitGameLobby();
 
 #### Send messages to the server
 
-It is possible to send messages to be evaluated by the server-side rules. You can specify if you want the response to be sent to both players or only to yourself. Additionally you can also indicate if you want the messages to be processed by the server-side rules in order of arrival or in parallel.
+It is possible to send messages to be evaluated by the server-side rules. You can specify if you want the response to be sent to both players or only to you. Additionally, you can indicate if you want the messages to be processed by the server-side rules in order of arrival or in parallel.
 
 ```js
 PG.serverMessage(
@@ -234,7 +235,7 @@ PG.serverMessage(
 
 #### Send messages to the opponent
 
-If the game requires to send messages to the opponent that should not be evaluated by the server-side rules, it can use this function. Optionally, you can specify if you do not want to allow more than one message to be sent within the specified time in milliseconds. If this is called more than once during this interval only the last message will be sent.
+If the game requires to send messages to the opponent that should not be evaluated by the server-side rules, it can use this function. Optionally, you can specify if you do not want to allow more than one message to be sent within a specified time in milliseconds. In this case, if the function is called more than once during the specified interval, only the last message will be sent.
 
 ```js
 PG.playerMessage(
