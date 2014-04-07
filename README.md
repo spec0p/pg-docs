@@ -26,6 +26,7 @@ Install the following [Ruby Gems](https://rubygems.org/):
 $ gem install sass --version "3.2.10"
 $ gem install compass --version "0.12.2"
 $ gem install jekyll-compass
+$ gem install rake
 ```
 
 ### Build
@@ -46,6 +47,14 @@ Jekyll also comes with a built-in development server that will allow you to prev
 $ jekyll serve --watch --baseurl ''
 # => A development server will run at http://localhost:4000/,
 #    watched for changes, and regenerated automatically.
+```
+
+### Deploy
+
+Build Jekyll site locally and push it up to the origin/gh-pages branch using [Rake](http://rake.rubyforge.org/):
+
+```
+$ rake
 ```
 
 ## License
