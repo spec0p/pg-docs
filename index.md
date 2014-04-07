@@ -6,7 +6,7 @@ description: Learn how to create an HTML5 game and publish it on the Phune Gamin
 
 Welcome to the Phune Gaming game development documentation. Here you will find everything you need to know to develop games for the Phune Gaming platform.
 
-<h3>What is Phune Gaming?</h3>
+### What is Phune Gaming?
 
 Phune Gaming is a social multiplayer HTML5 gaming platform which allows casual games to be played online against real users. The Phune Gaming platform is composed of three main components:
 
@@ -14,15 +14,15 @@ Phune Gaming is a social multiplayer HTML5 gaming platform which allows casual g
 * The Phune Gaming client platform
 * And the games
 
-<h3>Why should I develop games for Phune Gaming?</h3>
+### Why should I develop games for Phune Gaming?
 
 Phune Gaming supports multiple platforms including desktop, mobile and TV. Developing a game for Phune Gaming will allow you to reach a vast number of gamers who will be able to play your game no matter where they are or what device they use.
 
-<h3>What knowledge do I need?</h3>
+### What knowledge do I need?
 
 To develop a game for Phune Gaming you will need to build two essential components: the game itself and server-side rules. For the game you can use your HTML, CSS and JavaScript skills and, if you prefer, you are free to use your favorite JavaScript game engine. The server-side rules are needed to manage the game states and validate the players' moves. The server-side rules can be written in JavaScript, Java or Drools.
 
-<h3>How to submit a game?</h3>
+### How to submit a game?
 
 In order to add a new game to Phune Gaming, we require that a developer send us the following components:
 
@@ -56,7 +56,7 @@ Alongside the documentation, feel free to have a look at the [Tic-Tac-Toe source
 
 Once the game is ready, send us an email to [pg-dev@present-technologies.com](mailto:pg-dev@present-technologies.com) with the two required components for a review and we will give you our feedback.
 
-Good luck! <br />
+Good luck!  
 Present Technologies
 
 <hr />
