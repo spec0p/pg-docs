@@ -1,6 +1,6 @@
 ---
 layout: default
-title: JavaScript SDK
+title: SDK for JavaScript
 description: Build HTML5 games for the Phune Gaming platform
 ---
 
@@ -46,7 +46,7 @@ You are now ready to start your game implementation. Please proceed to the <a hr
 <a name="getting-started"></a>
 <h3 data-magellan-destination="getting-started">Getting Started</h3>
 
-Initialize the JavaScript SDK by calling `PG.init` and defining the callback functions which will handle all matchmaking states and the game events sent to your game by the platform:
+Initialize the JavaScript SDK by calling `PG.init` and defining the callback functions which will handle all matchmaking phases and the game events sent to your game by the platform:
 
 ```js
 PG.init({
@@ -84,7 +84,7 @@ The detailed description for each callback is presented below.
 
 #### Match prepare
 
-During the match preparation state, the game should build the user interface and get ready to start playing. It is provided with the details of the player and opponent, and in which type of device the game is running ('mobile' or 'tv').
+During the match preparation phase, the game should build the user interface and get ready to start playing. It is provided with the details of the player and opponent, and in which type of device the game is running ('mobile' or 'tv').
 
 ```js
 onMatchPrepare: function(player, opponent, deviceType) {
@@ -207,7 +207,7 @@ The Phune Gaming SDK provides an [API](http://phune-gaming.github.io/pg-sdk-js/)
 
 #### Match start
 
-During the match preparation state (`onMatchPrepare` callback) the game must inform the platform when it is ready to be shown to the user by calling `PG.ready`.
+During the match preparation phase (`onMatchPrepare` callback) the game must inform the platform when it is ready to be shown to the user by calling `PG.ready`.
 
 ```js
 PG.ready();
@@ -215,7 +215,7 @@ PG.ready();
 
 #### Game lobby
 
-If the game is configured on the server to require a configuration state, the `onGameLobby` callback will be called to allow the game to send the required configuration back to the server by calling `PG.serverMessage`. When the match is ready to start, the game must inform the platform by calling `PG.exitGameLobby`.
+If the game is configured on the server to require a configuration phase, the `onGameLobby` callback will be called to allow the game to send the required configuration back to the server by calling `PG.serverMessage`. When the match is ready to start, the game must inform the platform by calling `PG.exitGameLobby`.
 
 ```js
 PG.exitGameLobby();
