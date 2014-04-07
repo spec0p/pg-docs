@@ -18,7 +18,7 @@ description: Build HTML5 games for the Phune Gaming platform
 <hr />
 
 
-Before you start developing your game you need to install the JavaScript SDK.
+Before you start developing your game you need to install the JavaScript SDK.  
 
 <a name="install"></a>
 <h3 data-magellan-destination="install">Install</h3>
@@ -265,4 +265,4 @@ PG.showMenu();
 
 <hr />
 
-What's next? Go to [Server rules](/server-rules.html) to find how to do your game validations on the server.
+What's next? Go to [Server rules](/server-rules.html) to find out how to do your game validations on the server.
