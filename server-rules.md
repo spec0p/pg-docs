@@ -19,21 +19,25 @@ description: Do your validations on the server
 <a name="getting-started"></a>
 <h3 data-magellan-destination="getting-started">Getting Started</h3>
 
-Phune Gaming requires the games to have a server-side component (aka server-side rules) which manages the game state changes and validates the moves. This component must provide the following functionality:
+Phune Gaming requires the games to have a server-side component (aka server-side rules) which manages the game states, validates the players' moves and optionally generates the moves for a bot. 
 
-* Create the initial game state
-* Evaluate moves
-* Generate bots move <sup>optional</sup>
-* Evaluate game-specific messages <sup>optional</sup>
-* Get info about the ongoing match
-
-The server-side rules can be written in JavaScript, Java or Drools, and must implement the interface specified for the particular programming language:
+The server-side rules can be written in JavaScript, Java or Drools, and must implement our interface for the particular programming language:
 
 * JavaScript: [JavaScriptRules](/rules/JavaScriptRules.html)
 * Java: [JavaRules](/rules/JavaRules.html)
 * Drools: [DroolsRules](/rules/DroolsRules.html)
 
-The [JavaScript implementation of the rules used on the sever for the game Tic-Tac-Toe](https://github.com/phune-gaming/pg-tic-tac-toe/blob/master/src/js/gameRules.js) is freely available on GitHub.
+The server-side rules for your game must provide the following functionality:
+
+* Create the initial game state
+* Evaluate moves
+* Generate bot moves <sup>optional</sup>
+* Evaluate game-specific messages <sup>optional</sup>
+* Get info about the ongoing match
+
+Follow the SPI documentation below for implementation details.
+
+**Note:** The [JavaScript implementation of the server-side rules for the Tic-Tac-Toe game](https://github.com/phune-gaming/pg-tic-tac-toe/blob/master/src/js/gameRules.js) is freely available on GitHub.
 
 <hr />
 
@@ -44,7 +48,7 @@ The [JavaScript implementation of the rules used on the sever for the game Tic-T
 
 #### Create the initial game state
 
-When a new match is created, a representation of the game initial state must be defined. It must contain all the information that needs to be stored for that concrete match.
+When a new match is created, a representation of the game initial state must be defined. It must contain all the information that needs to be stored for the concrete match.
 
 <dl class="tabs" data-tab>
     <dd class="active"><a href="#javascript-1">JavaScript</a></dd>
@@ -53,7 +57,7 @@ When a new match is created, a representation of the game initial state must be 
 </dl>
 <div class="tabs-content">
     <div class="content active" id="javascript-1">
-<p>The <code>createStateForNewMatch</code> function will be called to return the game state as a string. It should contain the players information, the id of the next player to play, the id of the next move and any other information relevant to the game. The players parameter is an array, which contains information about the players. Each element in the players array is an array for a single player, such as the first position holds the player's id and the second position holds a boolean value indicating whether the player is a bot or not.</p>
+<p>The <code>createStateForNewMatch</code> function will be called to return the game state as a string containing: the players information, the id of the next player to play, the id of the next move and any other information relevant to the game. The <code>players</code> parameter is an array with information about the players. Each element in the <code>players</code> array is an array for one player, such as the first position holds the player's id and the second position holds a boolean value indicating whether the player is a bot or not.</p>
 
 {% highlight js %}
 var createStateForNewMatch = function(players, nextPlayerId) {
@@ -92,7 +96,7 @@ public final class GameState {
 }
 {% endhighlight %}
 
-<p>One important aspect to keep in mind about the game states is that they are persisted on the server as strings. This means that you will need to convert your game state from/to a string every time the server invokes the methods <code>getState</code> and <code>restoreState</code>. However you can delegate this work to the provided SPI by extending your server-side rules implementation from the abstract class <code>JavaGameRulesBase&lt;T></code>, where <code>&lt;T></code> is the class type of your game state, e.g:</p>
+<p>One important aspect to keep in mind about the game states is that they are persisted on the server as strings. This means that you will need to convert your game state from/to a string every time the server invokes the methods <code>getState</code> and <code>restoreState</code>. However, you can delegate this work to the provided SPI by extending your server-side rules implementation from the abstract class <code>JavaGameRulesBase&lt;T></code>, where <code>&lt;T></code> is the class type of your game state, e.g:</p>
 
 {% highlight java %}
 public class GameRules extends JavaGameRulesBase<BoardGameState> {
@@ -105,7 +109,7 @@ public class GameRules extends JavaGameRulesBase<BoardGameState> {
 {% endhighlight %}
     </div>
     <div class="content" id="drools-1">
-<p>Using Drools a rule to setup the match must be created. The initial match status must be <code>Status.CREATED</code> and after all the necessary setup is performed it should be changed to <code>Status.PLAYING</code>. The <code>lastMoveDate</code> in the match object should be set to <code>null</code>.</p>
+<p>When using Drools you must create a rule to setup the match. The initial match status must be <code>Status.CREATED</code> and after all the necessary setup is performed it should be changed to <code>Status.PLAYING</code>. The <code>lastMoveDate</code> in the match object should be set to <code>null</code>.</p>
 
 {% highlight text %}
 rule "match setup"
@@ -151,7 +155,7 @@ var evaluateMove = function(state, playerId, moveId, content) {
 <p><strong>Note:</strong> The parameters <code>playerId</code> and <code>moveId</code> are automatically validated by the server before calling this function.</p>
     </div>
     <div class="content" id="java-2">
-<p>The method responsible for evaluating and executing (if applicable) a move sent by a client is named <code>evaluateMove</code>. It receives a <code>Move</code> entity and must return an <code>EvaluationResult</code> object instantiated with info based on the result from the move evaluation.</p>
+<p>The method responsible for evaluating and executing (if applicable) a move sent by a client is named <code>evaluateMove</code>. It receives a <code>Move</code> entity and must return an <code>EvaluationResult</code> object instantiated with information based on the result from the move evaluation.</p>
 
 {% highlight java %}
 @Override
@@ -255,9 +259,9 @@ when
     </div>
 </div>
 
-#### Generate bots move
+#### Generate bot moves
 
-If bots are supported by a game, their moves must be generated.
+If bots are supported in a game, their moves must be generated.
 
 <dl class="tabs" data-tab>
     <dd class="active"><a href="#javascript-3">JavaScript</a></dd>
@@ -265,7 +269,7 @@ If bots are supported by a game, their moves must be generated.
 </dl>
 <div class="tabs-content">
     <div class="content active" id="javascript-3">
-<p>The <code>createBotMove</code> function will be called to generate a valid move for the bot. It returns an object containing the content of the move and the state of the game as strings. The <code>evaluateMove</code> function will be called automatically with the generated bot move, as such, unlike the Java implementation, this move does not need to be applied to the game state.</p>
+<p>The <code>createBotMove</code> function will be called to generate a valid move for the bot. It returns an object containing the game state and the content of the move as strings. The <code>evaluateMove</code> function will be called automatically with the generated bot move, thus unlike the Java implementation, this move does not need to be applied to the game state.</p>
 
 {% highlight js %}
 var createBotMove = function(state, playerId) {
@@ -308,8 +312,8 @@ public EvaluationResult createAndExecuteBotMove(Move prefilledMove) {
 
 Games can send messages that are evaluated on the server and may change the game state.
 This type of messages may be used for game configuration.
-For instance, on a game like Battleship, the client can use these messages to ask the server to generate a new set of ships in random positions.
-The evaluation of these messages is very similar to the evaluation of the moves except for the move validations already described in the section "Evaluate moves".
+For instance, on a game like Battleship, the client can use these messages to ask the server to generate a new set of ships at random positions.
+The evaluation of these messages is very similar to the evaluation of the moves except for the move validations already described in section "Evaluate moves".
 
 <dl class="tabs" data-tab>
     <dd class="active"><a href="#javascript-4">JavaScript</a></dd>
@@ -329,7 +333,7 @@ function evaluateServerMessage(state, playerId, content) {
 {% endhighlight %}
     </div>
     <div class="content" id="java-4">
-<p>The method <code>evaluateMessage</code> receives a <code>Message</code> entity and must return a <code>EvaluationResult</code> instance.</p>
+<p>The method <code>evaluateMessage</code> receives a <code>Message</code> entity and must return an <code>EvaluationResult</code> instance.</p>
 
 {% highlight java %}
 @Override
@@ -347,7 +351,7 @@ public EvaluationResult evaluateMessage(Message message) {
 
 #### Get info about the ongoing match
 
-The game state kept on the game rules objects, should provide the Phune Gaming platform with the information it requires (i.e. the id of the next player to play and the id of the next expected move).
+The game state, stored in the server-side rules objects, should provide the Phune Gaming platform with the information it requires (i.e. the id of the next player to play and the id of the next expected move).
 
 <dl class="tabs" data-tab>
     <dd class="active"><a href="#javascript-5">JavaScript</a></dd>
@@ -383,7 +387,7 @@ public Integer getIdOfNextMove() {
 {% endhighlight %}
     </div>
     <div class="content" id="drools-5">
-<p>In Drools, new queries to obtain the <code>nextPlayerId</code> and <code>nextMoveId</code> must be created. The platform bridge between Java and Drools expect vars <code>$lastPlayerMoveDTO</code> and <code>$nextPlayer</code> to exist, please do not change their names.</p>
+<p>In Drools, you must create new queries to obtain the <code>nextPlayerId</code> and <code>nextMoveId</code>. The platform bridge between Java and Drools expect vars <code>$lastPlayerMoveDTO</code> and <code>$nextPlayer</code> to exist, please do not change their names.</p>
 
 {% highlight text %}
 query "findLastPlayerMoveDTO"
