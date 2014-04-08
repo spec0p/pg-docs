@@ -54,7 +54,7 @@ To implement and test these components on your development machine, please follo
 
 Alongside the documentation, feel free to have a look at the [Tic-Tac-Toe source code](https://github.com/phune-gaming/pg-tic-tac-toe) for a complete game implementation example.
 
-Once the game is ready, send us an email to [pg-dev@present-technologies.com](mailto:pg-dev@present-technologies.com) with the two required components for a review and we will give you our feedback.
+Once you are ready, send us an email to [pg-dev@present-technologies.com](mailto:pg-dev@present-technologies.com) with the two required components for a review and we will give you our feedback.
 
 Good luck!  
 Present Technologies

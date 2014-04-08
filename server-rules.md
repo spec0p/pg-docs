@@ -404,3 +404,7 @@ end
 {% endhighlight %}
     </div>
 </div>
+
+<hr />
+
+What's next? Submit your game and the server-side rules to [pg-dev@present-technologies.com](mailto:pg-dev@present-technologies.com).

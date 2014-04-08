@@ -1,5 +1,5 @@
 <ul class="side-nav">
-    <li class="heading">Sections</li>
+    <li class="heading">Guide</li>
 
     {% if page.url == '/index.html' %}
         <li class="active"><a href="./">Getting started</a></li>
@@ -20,10 +20,13 @@
     {% endif %}
 
     {% if page.url == '/server-rules.html' %}
-        <li class="active"><a href="./server-rules.html">Server rules</a></li>
+        <li class="active"><a href="./server-rules.html">Server-side rules</a></li>
     {% else %}
-        <li><a href="./server-rules.html">Server rules</a></li>
+        <li><a href="./server-rules.html">Server-side rules</a></li>
     {% endif %}
 
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
     <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
 </ul>
