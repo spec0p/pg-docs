@@ -39,10 +39,10 @@ In response you will receive an `id` for your game and the credentials for an SF
 <a name="download"></a>
 <h3 data-magellan-destination="download">Download Phune Gaming</h3>
 
-To download the Phune Gaming client platform you must accept the [Present Technologies License Agreement for Phune Gaming](javascript:alert('Not yet available!'\)).
+To download the Phune Gaming client platform you must accept the [Present Technologies License Agreement for Phune Gaming](license-agreement.html).
 
 <input id="accept-license" type="checkbox" /><label for="accept-license">Accept License Agreement</label>  
-<a id="download-platform" href="javascript:alert('Not yet available!')">Download the Phune Gaming client platform</a>
+<a id="download-platform" href="http://www.phune.com/assets/phune.zip">Download the Phune Gaming client platform</a>
 
 <hr />
 
