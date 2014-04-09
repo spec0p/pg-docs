@@ -32,7 +32,7 @@ bower install phune-gaming-sdk
 Add Phune Gaming SDK to your `index.html`:
 
 ```html
-<script src="/bower_components/phune-gaming-sdk/dist/PG.min.js"></script>
+<script src="bower_components/phune-gaming-sdk/dist/PG.min.js"></script>
 ```
 
 Alternatively, for those who do not use Bower, you can directly [download the Phune Gaming SDK from GitHub](https://github.com/phune-gaming/pg-sdk-js/releases).

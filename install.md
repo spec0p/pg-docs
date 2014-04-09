@@ -28,7 +28,8 @@ Send an email to [pg-dev@present-technologies.com](mailto:pg-dev@present-technol
 ```
 Name: "The name of the game",
 Description: "The description of the game"
-Bot: "Whether your game support bots or not"
+Move timeout (time available for each turn): 60
+Bot (whether your game support bots or not): true/false
 ```
 
 In response you will receive an `id` for your game and the credentials for an SFTP account that you will need later to deploy the server-side rules on the server. The rules are used to manage the game states, to validate players' moves or to generate moves for a bot.
