@@ -29,6 +29,8 @@ In order to add a new game to Phune Gaming, we require that a developer send us 
 * The game distribution/binary
 * The server-side rules used for server validations
 
+**Note:** For the time being, Phune Gaming platform only supports turn based games with two players.
+
 To implement and test these components on your development machine, please follow the guides below:
 
 <ul class="small-block-grid-3">
