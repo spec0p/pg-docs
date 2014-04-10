@@ -6,10 +6,13 @@ title: Present Technologies License Agreement
 # Present Technologies License Agreement for Phune Gaming
 
 **DEFINITIONS**  
-Present Technologies: ...  
-Phune Gaming Platform: ...  
-Phune Gaming Client Platform: ...  
-Games: ...
+"Present Technologies" shall mean the IT company which has invented, developed and holds the copyrights of the Phune Gaming Platform.
+
+"Phune Gaming Platform" shall mean a software product developed by Present Technologies which provides a platform for publishing Games.
+
+"Phune Gaming Client Platform" shall mean the component of the Phune Gaming Platform which is distributed to third party developers with intent to develop Games for the Phune Gaming Platform.
+
+"Games" shall mean a software product developed by third parties for the Phune Gaming Platform, this may include, but not limited to, source files, media files and libraries which were used in the development.
 
 **LICENSE TO USE**  
 Subject to the terms and conditions of this License, "Present Technologies" grants you a worldwide, non-exclusive, non-transferable, no-charge license to use the "Phune Gaming Client Platform" with the sole purpose of developing "Games" which will only be published on the "Phune Gaming Platform".
