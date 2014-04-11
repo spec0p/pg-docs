@@ -63,7 +63,7 @@ Install the Phune Gaming client platform by following the steps below:
 <a name="test"></a>
 <h3 data-magellan-destination="test">Test Phune Gaming</h3>
 
-To test if your environment is set up properly, copy the platform contents to an HTTP server of your choice. Alternatively, if you have [Python](https://www.python.org/) installed, you can simply run `python -m SimpleHTTPServer` at the root of the platform's folder.
+To test if your environment is set up properly, copy the platform contents to an HTTP server of your choice. Alternatively, if you have [Python](https://www.python.org/) installed, you can simply run `python -m SimpleHTTPServer` with Python 2 or `python3 -m http.server` with Python 3, at the root of the platform's folder.
 
 Open your web browser and navigate to `localhost:port[/platform-location]` (i.e. [localhost:8000](http://localhost:8000/) when using Python's `SimpleHTTPServer` module). You should see the Phune Gaming client platform, feel free to explore it. At this point you will not be able to start your game yet, since you need to implement the required callbacks described in the next section.
 
