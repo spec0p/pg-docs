@@ -44,7 +44,7 @@ $ jekyll build --watch
 Jekyll also comes with a built-in development server that will allow you to preview what the generated site will look like in your browser locally:
 
 ```
-$ jekyll serve --watch --baseurl ''
+$ jekyll serve --watch
 # => A development server will run at http://localhost:4000/,
 #    watched for changes, and regenerated automatically.
 ```
