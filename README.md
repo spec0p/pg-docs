@@ -2,7 +2,7 @@
 
 ## Game development tutorial
 
-If you are looking for the game development tutorial, please head up to [Phune Gaming game development tutorial](http://phune-gaming.github.io/pg-docs/).
+If you are looking for the game development tutorial, please head up to [Phune Gaming game development tutorial](http://developers.phune.com).
 
 ## Generate the site locally
 

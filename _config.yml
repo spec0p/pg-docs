@@ -1,6 +1,7 @@
 title: Phune Gaming
 description: Tutorial to walk you through the process of creating a HTML5 game and integrating it with the Phune Gaming platform.
-baseurl: /pg-docs
+# baseurl: /pg-docs
+baseurl: /
 
 markdown: redcarpet
 pygments: true

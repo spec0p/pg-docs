@@ -2,27 +2,27 @@
     <li class="heading">Guide</li>
 
     {% if page.url == '/index.html' %}
-        <li class="active"><a href="./">Getting started</a></li>
+        <li class="active"><a href="{{ site.baseurl }}">Getting started</a></li>
     {% else %}
-        <li><a href="./">Getting started</a></li>
+        <li><a href="{{ site.baseurl }}">Getting started</a></li>
     {% endif %}
 
     {% if page.url == '/install.html' %}
-        <li class="active"><a href="./install.html">Install Phune Gaming</a></li>
+        <li class="active"><a href="{{ site.baseurl }}install.html">Install Phune Gaming</a></li>
     {% else %}
-        <li><a href="./install.html">Install Phune Gaming</a></li>
+        <li><a href="{{ site.baseurl }}install.html">Install Phune Gaming</a></li>
     {% endif %}
 
     {% if page.url == '/sdk-js.html' %}
-        <li class="active"><a href="./sdk-js.html">JavaScript SDK</a></li>
+        <li class="active"><a href="{{ site.baseurl }}sdk-js.html">JavaScript SDK</a></li>
     {% else %}
-        <li><a href="./sdk-js.html">JavaScript SDK</a></li>
+        <li><a href="{{ site.baseurl }}sdk-js.html">JavaScript SDK</a></li>
     {% endif %}
 
     {% if page.url == '/server-rules.html' %}
-        <li class="active"><a href="./server-rules.html">Server-side rules</a></li>
+        <li class="active"><a href="{{ site.baseurl }}server-rules.html">Server-side rules</a></li>
     {% else %}
-        <li><a href="./server-rules.html">Server-side rules</a></li>
+        <li><a href="{{ site.baseurl }}server-rules.html">Server-side rules</a></li>
     {% endif %}
 
     <li class="divider"></li>

@@ -11,10 +11,10 @@
         {% endif %}
 
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="css/app.css" />
+        <link rel="stylesheet" href="{{ site.baseurl }}css/app.css" />
 
         <!-- Custom JS -->
-        <script src="bower_components/modernizr/modernizr.js"></script>
+        <script src="{{ site.baseurl }}bower_components/modernizr/modernizr.js"></script>
     </head>
     <body>
         <main class="row">
@@ -23,8 +23,8 @@
             </section>
         </main>
 
-        <script src="bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="bower_components/foundation/js/foundation.min.js"></script>
-        <script src="js/app.js"></script>
+        <script src="{{ site.baseurl }}bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="{{ site.baseurl }}bower_components/foundation/js/foundation.min.js"></script>
+        <script src="{{ site.baseurl }}js/app.js"></script>
     </body>
 </html>
