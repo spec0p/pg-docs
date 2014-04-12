@@ -23,7 +23,7 @@ Before you start developing your game you need to install the JavaScript SDK.
 <a name="install"></a>
 <h3 data-magellan-destination="install">Install</h3>
 
-Install the JavaScript SDK with [Bower](http://bower.io/) from the command-line:
+Install the JavaScript SDK with [Bower](http://bower.io/) from the command-line. From your game's root folder run:
 
 ```
 bower install phune-gaming-sdk
