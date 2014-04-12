@@ -55,8 +55,8 @@ Install the Phune Gaming client platform by following the steps below:
 
 1. Unzip the platform into a local folder. 
 2. Inside the platform create a new folder called `game`. 
-3. Inside `game` create another folder named after the `id` from our email. The `your-game-id` folder is where your game contents will reside, structure it the way you want.
-4. Finally, create an `index.html` file at the root of `your-game-id` folder. 
+3. Inside the folder `game`, create another folder named after the `id` from our email. This folder is where your game contents will reside.
+4. Finally, inside that folder create a new empty `index.html` file.
 
 <hr />
 
