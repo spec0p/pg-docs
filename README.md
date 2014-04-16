@@ -12,21 +12,19 @@ To build the site locally please read the following subsections.
 
 This documentation is built with [Jekyll](http://jekyllrb.com/). It you don't have Jekyll installed please read the [Jekyll Installation](http://jekyllrb.com/docs/installation/) page to install it, or alternatively, read [How to Run Jekyll on Windows](https://github.com/juthilo/run-jekyll-on-windows/).
 
+With Jekyll installed, install all the required additional [Ruby Gems](https://rubygems.org/) by running:
+
+```
+$ gem install bundler
+$ bundle install
+```
+
 It also uses [Foundation](http://foundation.zurb.com/) with [Compass](http://compass-style.org/) as the base front-end framework. In order to build the project please install the projects below.
 
 Install Foundation dependency with [Bower](http://bower.io):
 
 ```
 $ bower install
-```
-
-Install the following [Ruby Gems](https://rubygems.org/):
-
-```
-$ gem install sass --version "3.2.10"
-$ gem install compass --version "0.12.2"
-$ gem install jekyll-compass
-$ gem install rake
 ```
 
 ### Build
