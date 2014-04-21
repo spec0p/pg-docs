@@ -37,7 +37,11 @@ The server-side rules for your game must provide the following functionality:
 
 Follow the SPI documentation below for implementation details.
 
-**Note:** The [JavaScript implementation of the server-side rules for the Tic-Tac-Toe game](https://github.com/phune-gaming/pg-tic-tac-toe/blob/master/src/js/gameRules.js) is freely available on GitHub.
+<div class="panel callout radius">
+{% markdown %}
+The [JavaScript implementation of the server-side rules for the Tic-Tac-Toe game](https://github.com/phune-gaming/pg-tic-tac-toe/blob/master/src/js/gameRules.js) is freely available on GitHub.
+{% endmarkdown %}
+</div>
 
 ---
 
@@ -158,9 +162,13 @@ var evaluateMove = function(state, playerId, moveId, content) {
     };
 };
 ```
-
-**Note:** The parameters `playerId` and `moveId` are automatically validated by the server before calling this function.
 {% endmarkdown %}
+
+        <div class="panel callout radius">
+{% markdown %}
+The parameters `playerId` and `moveId` are automatically validated by the server before calling this function.
+{% endmarkdown %}
+        </div>
     </div>
     <div class="content" id="java-2">
 {% markdown %}
@@ -317,9 +325,13 @@ public EvaluationResult createAndExecuteBotMove(Move prefilledMove) {
     return evaluationResult;
 }
 ```
-
-**Note:** `prefilledMove.setContent` must be called passing the move representation created for the bot as an argument.
 {% endmarkdown %}
+
+        <div class="panel callout radius">
+{% markdown %}
+`prefilledMove.setContent` must be called passing the move representation created for the bot as an argument.
+{% endmarkdown %}
+        </div>
     </div>
 </div>
 

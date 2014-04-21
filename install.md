@@ -25,16 +25,22 @@ To download and install the Phune Gaming client platform complete the steps bell
 
 Send an email to [pg-dev@present-technologies.com](mailto:pg-dev@present-technologies.com) with the following information:
 
-```
-Name: "The name of the game",
-Description: "The description of the game"
-Move timeout (time available for each turn): 60
-Bot (whether your game support bots or not): true/false
-```
+<div class="panel radius">
+{% markdown %}
+**Name:** "The name of the game",  
+**Description:** "The description of the game"  
+**Move timeout:** 60 (time available for each turn)  
+**Bot:** true/false (whether your game support bots or not)
+{% endmarkdown %}
+</div>
 
 In response you will receive an `id` for your game and the credentials for an SFTP account that you will need later to deploy the server-side rules on the server. The rules are used to manage the game states, to validate players' moves or to generate moves for a bot.
 
-**Note:** You can always update the game details by sending us a new email and refering the game `id`.
+<div class="panel callout radius">
+{% markdown %}
+You can always update the game details by sending us a new email and refering the game `id`.
+{% endmarkdown %}
+</div>
 
 ---
 
