@@ -23,7 +23,7 @@ Before you start developing your game you need to install the JavaScript SDK.
 <a name="install"></a>
 <h3 data-magellan-destination="install">Install</h3>
 
-Download [the Phune Gaming SDK directly from GitHub](https://github.com/phune-gaming/pg-sdk-js/releases) and unzip it somewhere. Then copy the `dist` folder to the javascript folder for your game (i.e. `js` folder inside `your-game-id` folder).
+Download [the Phune Gaming SDK directly from GitHub](https://github.com/phune-gaming/pg-sdk-js/releases) and unzip it somewhere. Then copy the contents of the `dist` folder to the javascript folder for your game (i.e. `js` folder inside `your-game-id` folder).
 
 
 Alternatively, if you use [Bower](http://bower.io/), you can install the JavaScript SDK from the command-line. From the root of `your-game-id` folder run:
