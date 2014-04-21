@@ -6,7 +6,7 @@ description: Download and configure everything you need to get started
 
 ---
 
-<div data-magellan-destination="sdk-js" data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
+<div data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
     <dl class="sub-nav">
         <dt>Jump to:</dt>
         <dd data-magellan-arrival="request"><a href="#request">Developer's account</a></dd>

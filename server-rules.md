@@ -6,7 +6,7 @@ description: Do your validations on the server
 
 ---
 
-<div data-magellan-destination="sdk-js" data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
+<div data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
     <dl class="sub-nav">
         <dt>Jump to:</dt>
         <dd data-magellan-arrival="getting-started"><a href="#getting-started">Getting Started</a></dd>

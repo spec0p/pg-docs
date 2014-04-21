@@ -33,13 +33,22 @@ In order to add a new game to Phune Gaming, we require that a developer send us 
 
 To implement and test these components on your development machine, please follow the guides below:
 
-<ul class="small-block-grid-3">
+<ul class="small-block-grid-2">
     <li class="text-center">
         <a href="install.html">
 {% markdown %}
 ![Install Phune Gaming](img/install.png)
 
 Install Phune Gaming
+{% endmarkdown %}
+        </a>
+    </li>
+    <li class="text-center">
+        <a href="best-practices.html">
+{% markdown %}
+![Best practices](img/sdk-js.png)
+
+Best practices
 {% endmarkdown %}
         </a>
     </li>
@@ -72,4 +81,4 @@ Present Technologies
 
 ---
 
-What's next? Go to [Install Phune Gaming](install.html) to learn how to install the Phune Gaming client platform.
+What's next? Go to [Best practices](best-practices.html) to find more about Phune Gaming's best practices for game development.
