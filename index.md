@@ -50,7 +50,7 @@ Install Phune Gaming
     <li class="text-center">
         <a href="best-practices.html">
 {% markdown %}
-![Best practices](img/sdk-js.png)
+![Best practices](img/best-practices.png)
 
 Best practices
 {% endmarkdown %}
