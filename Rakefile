@@ -1,3 +1,4 @@
+require "tmpdir"
 require 'jekyll'
 
 desc "Install Bower dependencies"
