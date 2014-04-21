@@ -7,13 +7,12 @@ description: Download and configure everything you need to get started
 ---
 
 <div data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
-    <dl class="sub-nav">
-        <dt>Jump to:</dt>
-        <dd data-magellan-arrival="request"><a href="#request">Developer's account</a></dd>
-        <dd data-magellan-arrival="download"><a href="#download">Download Phune</a></dd>
-        <dd data-magellan-arrival="install"><a href="#install">Install Phune</a></dd>
-        <dd data-magellan-arrival="test"><a href="#test">Test Phune</a></dd>
-    </dl>
+    <ul class="sub-nav">
+        <li data-magellan-arrival="request"><a href="#request">Developer's account</a></li>
+        <li data-magellan-arrival="download"><a href="#download">Download Phune</a></li>
+        <li data-magellan-arrival="install"><a href="#install">Install Phune</a></li>
+        <li data-magellan-arrival="test"><a href="#test">Test Phune</a></li>
+    </ul>
 </div>
 
 ---

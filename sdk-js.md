@@ -7,12 +7,11 @@ description: Build HTML5 games for the Phune Gaming platform
 ---
 
 <div data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
-    <dl class="sub-nav">
-        <dt>Jump to:</dt>
-        <dd data-magellan-arrival="install"><a href="#install">Install</a></dd>
-        <dd data-magellan-arrival="getting-started"><a href="#getting-started">Getting Started</a></dd>
-        <dd data-magellan-arrival="public-api"><a href="#public-api">Public API</a></dd>
-    </dl>
+    <ul class="sub-nav">
+        <li data-magellan-arrival="install"><a href="#install">Install</a></li>
+        <li data-magellan-arrival="getting-started"><a href="#getting-started">Getting Started</a></li>
+        <li data-magellan-arrival="public-api"><a href="#public-api">Public API</a></li>
+    </ul>
 </div>
 
 ---

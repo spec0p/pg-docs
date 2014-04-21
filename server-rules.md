@@ -7,11 +7,10 @@ description: Do your validations on the server
 ---
 
 <div data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
-    <dl class="sub-nav">
-        <dt>Jump to:</dt>
-        <dd data-magellan-arrival="getting-started"><a href="#getting-started">Getting Started</a></dd>
-        <dd data-magellan-arrival="spi-docs"><a href="#spi-docs">SPI documentation</a></dd>
-    </dl>
+    <ul class="sub-nav">
+        <li data-magellan-arrival="getting-started"><a href="#getting-started">Getting Started</a></li>
+        <li data-magellan-arrival="spi-docs"><a href="#spi-docs">SPI documentation</a></li>
+    </ul>
 </div>
 
 ---
@@ -31,8 +30,8 @@ The server-side rules for your game must provide the following functionality:
 
 * Create the initial game state
 * Evaluate moves
-* Generate bot moves <sup>optional</sup>
-* Evaluate game-specific messages <sup>optional</sup>
+* Generate bot moves ^optional
+* Evaluate game-specific messages ^optional
 * Get info about the ongoing match
 
 Follow the SPI documentation below for implementation details.
@@ -278,7 +277,7 @@ when
     </div>
 </div>
 
-#### Generate bot moves <sup>optional</sup>
+#### Generate bot moves ^optional
 
 If bots are supported in a game, their moves must be generated.
 
@@ -335,7 +334,7 @@ public EvaluationResult createAndExecuteBotMove(Move prefilledMove) {
     </div>
 </div>
 
-#### Evaluate game-specific messages <sup>optional</sup>
+#### Evaluate game-specific messages ^optional
 
 Games can send messages that are evaluated on the server and may change the game state.
 This type of messages may be used for game configuration.

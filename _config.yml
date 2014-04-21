@@ -4,6 +4,8 @@ description: Tutorial to walk you through the process of creating a HTML5 game a
 baseurl: /
 
 markdown: redcarpet
+redcarpet:
+  extensions: [tables, superscript]
 pygments: true
 encoding: UTF-8
 
