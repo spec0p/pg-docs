@@ -36,20 +36,29 @@ To implement and test these components on your development machine, please follo
 <ul class="small-block-grid-3">
     <li class="text-center">
         <a href="install.html">
-            <img src="img/install.png" alt="Install Phune Gaming" />
-            <p>Install Phune Gaming</p>
+{% markdown %}
+![Install Phune Gaming](img/install.png)
+
+Install Phune Gaming
+{% endmarkdown %}
         </a>
     </li>
     <li class="text-center">
         <a href="sdk-js.html">
-            <img src="img/sdk-js.png" alt="Phune Gaming SDK for JavaScript" />
-            <p>JavaScript SDK</p>
+{% markdown %}
+![Phune Gaming SDK for JavaScript](img/sdk-js.png)
+
+JavaScript SDK
+{% endmarkdown %}
         </a>
     </li>
     <li class="text-center">
         <a href="server-rules.html">
-            <img src="img/server-rules.png" alt="Phune Gaming Server-Side Rules" />
-            <p>Server-Side Rules</p>
+{% markdown %}
+![Phune Gaming Server-Side Rules](img/server-rules.png)
+
+Server-Side Rules
+{% endmarkdown %}
         </a>
     </li>
 </ul>
@@ -61,6 +70,6 @@ Once you are ready, send us an email to [pg-dev@present-technologies.com](mailto
 Good luck!  
 Present Technologies
 
-<hr />
+---
 
 What's next? Go to [Install Phune Gaming](install.html) to learn how to install the Phune Gaming client platform.

@@ -4,7 +4,7 @@ title: SDK for JavaScript
 description: Build HTML5 games for the Phune Gaming platform
 ---
 
-<hr />
+---
 
 <div data-magellan-destination="sdk-js" data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
     <dl class="sub-nav">
@@ -15,7 +15,7 @@ description: Build HTML5 games for the Phune Gaming platform
     </dl>
 </div>
 
-<hr />
+---
 
 
 Before you start developing your game you need to install the JavaScript SDK.  
@@ -37,11 +37,11 @@ Add Phune Gaming SDK to your `index.html`:
 
 Alternatively, for those who do not use Bower, you can directly [download the Phune Gaming SDK from GitHub](https://github.com/phune-gaming/pg-sdk-js/releases).
 
-You are now ready to start your game implementation. Please proceed to the <a href="#getting-started">Getting Started</a> sub-section to find which callbacks your game needs to implement to process the messages sent by the platform, and to the <a href="#public-api">Public API</a> sub-section to find out which methods you have available to send the game messages (e.g. moves) to the server.
+You are now ready to start your game implementation. Please proceed to the [Getting Started](#getting-started) sub-section to find which callbacks your game needs to implement to process the messages sent by the platform, and to the [Public API](#public-api) sub-section to find out which methods you have available to send the game messages (e.g. moves) to the server.
 
 **Note:** The [implementation of the game Tic-Tac-Toe](https://github.com/phune-gaming/pg-tic-tac-toe) is freely available on GitHub.
 
-<hr />
+---
 
 <a name="getting-started"></a>
 <h3 data-magellan-destination="getting-started">Getting Started</h3>
@@ -198,7 +198,7 @@ onKeyPress: function(key) {
 }
 ```
 
-<hr />
+---
 
 <a name="public-api"></a>
 <h3 data-magellan-destination="public-api">Public API</h3>
@@ -263,6 +263,6 @@ The game must include a visual component which allows the user to have access to
 PG.showMenu();
 ```
 
-<hr />
+---
 
 What's next? Go to [Server rules](server-rules.html) to find out how to do your game validations on the server.

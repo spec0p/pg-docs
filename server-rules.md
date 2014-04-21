@@ -4,7 +4,7 @@ title: Server-side rules
 description: Do your validations on the server
 ---
 
-<hr />
+---
 
 <div data-magellan-destination="sdk-js" data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
     <dl class="sub-nav">
@@ -14,7 +14,7 @@ description: Do your validations on the server
     </dl>
 </div>
 
-<hr />
+---
 
 <a name="getting-started"></a>
 <h3 data-magellan-destination="getting-started">Getting Started</h3>
@@ -39,7 +39,7 @@ Follow the SPI documentation below for implementation details.
 
 **Note:** The [JavaScript implementation of the server-side rules for the Tic-Tac-Toe game](https://github.com/phune-gaming/pg-tic-tac-toe/blob/master/src/js/gameRules.js) is freely available on GitHub.
 
-<hr />
+---
 
 <a name="spi-docs"></a>
 <h3 data-magellan-destination="spi-docs">SPI documentation</h3>
@@ -57,9 +57,10 @@ When a new match is created, a representation of the game initial state must be 
 </dl>
 <div class="tabs-content">
     <div class="content active" id="javascript-1">
-<p>The <code>createStateForNewMatch</code> function will be called to return the game state as a string containing: the players information, the id of the next player to play, the id of the next move and any other information relevant to the game. The <code>players</code> parameter is an array with information about the players. Each element in the <code>players</code> array is an array for one player, such as the first position holds the player's id and the second position holds a boolean value indicating whether the player is a bot or not.</p>
+{% markdown %}
+The `createStateForNewMatch` function will be called to return the game state as a string containing: the players information, the id of the next player to play, the id of the next move and any other information relevant to the game. The `players` parameter is an array with information about the players. Each element in the `players` array is an array for one player, such as the first position holds the player's id and the second position holds a boolean value indicating whether the player is a bot or not.
 
-{% highlight js %}
+```js
 var createStateForNewMatch = function(players, nextPlayerId) {
     return JSON.stringify({
         players: players,
@@ -67,24 +68,26 @@ var createStateForNewMatch = function(players, nextPlayerId) {
         nextMoveId: 1
     });
 };
-{% endhighlight %}
+```
+{% endmarkdown %}
     </div>
     <div class="content" id="java-1">
-<p>The <code>createStateForNewMatch</code> is the method responsible for initializing and returning a new game state, which will be used in the match that is about to start.
-This method receives a list of ids of the players who will take part in the match and that most often needs to be saved on the match state for later usage by the server-side rules implementation.</p>
+{% markdown %}
+The `createStateForNewMatch` is the method responsible for initializing and returning a new game state, which will be used in the match that is about to start.
+This method receives a list of ids of the players who will take part in the match and that most often needs to be saved on the match state for later usage by the server-side rules implementation.
 
-{% highlight java %}
+```java
 @Override
 public void createStateForNewMatch(List<Long> players) {
     gameState = newState(Board.Origin.TOP_LEFT, 3, 3)
             .withPlayers(players)
             .build();
 }
-{% endhighlight %}
+```
 
-<p>The game state is game-specific and you may design it in the way that best fits your game. As an example the game state may look like the following:</p>
+The game state is game-specific and you may design it in the way that best fits your game. As an example the game state may look like the following:
 
-{% highlight java %}
+```java
 public final class GameState {
     private Long nextPlayerToPlay;
 
@@ -94,11 +97,11 @@ public final class GameState {
 
     // ...
 }
-{% endhighlight %}
+```
 
-<p>One important aspect to keep in mind about the game states is that they are persisted on the server as strings. This means that you will need to convert your game state from/to a string every time the server invokes the methods <code>getState</code> and <code>restoreState</code>. However, you can delegate this work to the provided SPI by extending your server-side rules implementation from the abstract class <code>JavaGameRulesBase&lt;T></code>, where <code>&lt;T></code> is the class type of your game state, e.g:</p>
+One important aspect to keep in mind about the game states is that they are persisted on the server as strings. This means that you will need to convert your game state from/to a string every time the server invokes the methods `getState` and `restoreState`. However, you can delegate this work to the provided SPI by extending your server-side rules implementation from the abstract class `JavaGameRulesBase<T>`, where `<T>` is the class type of your game state, e.g:
 
-{% highlight java %}
+```java
 public class GameRules extends JavaGameRulesBase<BoardGameState> {
     public GameRules(){
         super(BoardGameState.class);
@@ -106,12 +109,14 @@ public class GameRules extends JavaGameRulesBase<BoardGameState> {
 
     // ...
 }
-{% endhighlight %}
+```
+{% endmarkdown %}
     </div>
     <div class="content" id="drools-1">
-<p>When using Drools you must create a rule to setup the match. The initial match status must be <code>Status.CREATED</code> and after all the necessary setup is performed it should be changed to <code>Status.PLAYING</code>. The <code>lastMoveDate</code> in the match object should be set to <code>null</code>.</p>
+{% markdown %}
+When using Drools you must create a rule to setup the match. The initial match status must be `Status.CREATED` and after all the necessary setup is performed it should be changed to `Status.PLAYING`. The `lastMoveDate` in the match object should be set to `null`.
 
-{% highlight text %}
+```
 rule "match setup"
     when 
         $m : Match(game.id == [The game id of the match], status == Status.CREATED, lastMoveDate == null);
@@ -121,7 +126,8 @@ rule "match setup"
         // setup other rules
         [other facts related to the game]
 end
-{% endhighlight %}
+```
+{% endmarkdown %}
     </div>
 </div>
 
@@ -136,9 +142,10 @@ Every time a client sends a move, the move must be validated and the necessary c
 </dl>
 <div class="tabs-content">
     <div class="content active" id="javascript-2">
-<p>The <code>evaluateMove</code> function will be called to return an object containing the move result (possible values are <code>valid</code>, <code>invalid</code>, <code>draw</code> or <code>winner</code>), the content of the move that was evaluated and the new state of the game as a string.</p>
+{% markdown %}
+The `evaluateMove` function will be called to return an object containing the move result (possible values are `valid`, `invalid`, `draw` or `winner`), the content of the move that was evaluated and the new state of the game as a string.
 
-{% highlight js %}
+```js
 var evaluateMove = function(state, playerId, moveId, content) {
     // validate the move, and apply the required changes to the game state
     // ...
@@ -150,14 +157,16 @@ var evaluateMove = function(state, playerId, moveId, content) {
         state: JSON.stringify(state)
     };
 };
-{% endhighlight %}
+```
 
-<p><strong>Note:</strong> The parameters <code>playerId</code> and <code>moveId</code> are automatically validated by the server before calling this function.</p>
+**Note:** The parameters `playerId` and `moveId` are automatically validated by the server before calling this function.
+{% endmarkdown %}
     </div>
     <div class="content" id="java-2">
-<p>The method responsible for evaluating and executing (if applicable) a move sent by a client is named <code>evaluateMove</code>. It receives a <code>Move</code> entity and must return an <code>EvaluationResult</code> object instantiated with information based on the result from the move evaluation.</p>
+{% markdown %}
+The method responsible for evaluating and executing (if applicable) a move sent by a client is named `evaluateMove`. It receives a `Move` entity and must return an `EvaluationResult` object instantiated with information based on the result from the move evaluation.
 
-{% highlight java %}
+```java
 @Override
 public EvaluationResult evaluateMove(Move move) {
     EvaluationResult result = new EvaluationResult();
@@ -168,11 +177,11 @@ public EvaluationResult evaluateMove(Move move) {
 
     return result;
 }
-{% endhighlight %}
+```
 
-<p>The received <code>Move</code> entity contains the id of the player who performed the move, the id of the move and the move representation. This representation is specific for each game, which means that just like with the game state, you are free to design and use a move definition that best fits your game. As an example the move representation may look like the following:</p>
+The received `Move` entity contains the id of the player who performed the move, the id of the move and the move representation. This representation is specific for each game, which means that just like with the game state, you are free to design and use a move definition that best fits your game. As an example the move representation may look like the following:
 
-{% highlight java %}
+```java
 public class MoveContent {
     private int posX;
 
@@ -180,11 +189,11 @@ public class MoveContent {
 
     // Getters and Setters ...
 }
-{% endhighlight %}
+```
 
-<p>The move is sent by the client as a string and you can interpret it as such or map it to the object defined by you and use it instead. This can be achieved by using the <code>mapContentTo</code> method available in the class <code>Move</code>.</p>
+The move is sent by the client as a string and you can interpret it as such or map it to the object defined by you and use it instead. This can be achieved by using the `mapContentTo` method available in the class `Move`.
 
-{% highlight java %}
+```java
 MoveContent content = null;
 
 try {
@@ -198,24 +207,25 @@ int line = content.getPosY();
 int column = content.getPosX();
 
 // ...
-}
-{% endhighlight %}
+```
+{% endmarkdown %}
     </div>
     <div class="content" id="drools-2">
-<p>The moves are sent to the server in JSON format. In order to be interpreted by Drools they must be converted to an object defined inside Drools. For instance:</p>
+{% markdown %}
+The moves are sent to the server in JSON format. In order to be interpreted by Drools they must be converted to an object defined inside Drools. For instance:
 
-{% highlight text %}
+```
 declare Move
     posX : int
     posY : int
 end
-{% endhighlight %}
+```
 
-<p>The class name, <code>Move</code> in this example, should always be sent by the clients in the <code>className</code> variable so Drools can instantiate the correct object. This approach removes the need to create and compile Java POJOs for each move.</p>
+The class name, `Move` in this example, should always be sent by the clients in the `className` variable so Drools can instantiate the correct object. This approach removes the need to create and compile Java POJOs for each move.
 
-<p>The code snippet below demonstrates a possible implementation of the rules for: a valid move, an invalid move, and an ending move containing the winner info.</p>
+The code snippet below demonstrates a possible implementation of the rules for: a valid move, an invalid move, and an ending move containing the winner info.
 
-{% highlight text %}
+```
 rule "invalid move"
 // execute first
 salience 10
@@ -255,7 +265,8 @@ when
         $pm.setEvaluationContent("String of the result of winning");
         $pm.setEvaluationResultType(EvaluationResultType.MATCH_END_WINNER);
      end
-{% endhighlight %}
+```
+{% endmarkdown %}
     </div>
 </div>
 
@@ -269,9 +280,10 @@ If bots are supported in a game, their moves must be generated.
 </dl>
 <div class="tabs-content">
     <div class="content active" id="javascript-3">
-<p>The <code>createBotMove</code> function will be called to generate a valid move for the bot. It returns an object containing the game state and the content of the move as strings. The <code>evaluateMove</code> function will be called automatically with the generated bot move, thus unlike the Java implementation, this move does not need to be applied to the game state.</p>
+{% markdown %}
+The `createBotMove` function will be called to generate a valid move for the bot. It returns an object containing the game state and the content of the move as strings. The `evaluateMove` function will be called automatically with the generated bot move, thus unlike the Java implementation, this move does not need to be applied to the game state.
 
-{% highlight js %}
+```js
 var createBotMove = function(state, playerId) {
     return {
         state: JSON.stringify(state),
@@ -280,12 +292,14 @@ var createBotMove = function(state, playerId) {
         })
     };
 };
-{% endhighlight %}
+```
+{% endmarkdown %}
     </div>
     <div class="content" id="java-3">
-<p>In Java this is achieved by implementing the interface <code>JavaRulesBot</code>. This interface only defines one method named <code>createAndExecuteBotMove</code>. It receives a pre-filled move with some info like the move id and the bot id and must return an instantiated <code>EvaluationResult</code>. Since the <code>evaluateMove</code> function is not automatically called, the generated move must be added programmatically to the game state.</p>
+{% markdown %}
+In Java this is achieved by implementing the interface `JavaRulesBot`. This interface only defines one method named `createAndExecuteBotMove`. It receives a pre-filled move with some info like the move id and the bot id and must return an instantiated `EvaluationResult`. Since the `evaluateMove` function is not automatically called, the generated move must be added programmatically to the game state.
 
-{% highlight java %}
+```java
 @Override
 public EvaluationResult createAndExecuteBotMove(Move prefilledMove) {
 
@@ -302,9 +316,10 @@ public EvaluationResult createAndExecuteBotMove(Move prefilledMove) {
 
     return evaluationResult;
 }
-{% endhighlight %}
+```
 
-<p><strong>Note:</strong> <code>prefilledMove.setContent</code> must be called passing the move representation created for the bot as an argument.</p>
+**Note:** `prefilledMove.setContent` must be called passing the move representation created for the bot as an argument.
+{% endmarkdown %}
     </div>
 </div>
 
@@ -321,21 +336,24 @@ The evaluation of these messages is very similar to the evaluation of the moves,
 </dl>
 <div class="tabs-content">
     <div class="content active" id="javascript-4">
-<p>The <code>evaluateServerMessage</code> function will be called each time a message is sent by the game. It must return an object containing the message result and the new game state. It can also return <code>null</code> if it does not want a response to be sent to the game.</p>
+{% markdown %}
+The `evaluateServerMessage` function will be called each time a message is sent by the game. It must return an object containing the message result and the new game state. It can also return `null` if it does not want a response to be sent to the game.
 
-{% highlight js %}
+```js
 function evaluateServerMessage(state, playerId, content) {
     return {
         result: 'message', // any message details can be passed here
         state: JSON.stringify(state)
     };
 }
-{% endhighlight %}
+```
+{% endmarkdown %}
     </div>
     <div class="content" id="java-4">
-<p>The method <code>evaluateMessage</code> receives a <code>Message</code> entity and must return an <code>EvaluationResult</code> instance.</p>
+{% markdown %}
+The method `evaluateMessage` receives a `Message` entity and must return an `EvaluationResult` instance.
 
-{% highlight java %}
+```java
 @Override
 public EvaluationResult evaluateMessage(Message message) {
     EvaluationResult evaluationResult = new EvaluationResult();
@@ -345,7 +363,8 @@ public EvaluationResult evaluateMessage(Message message) {
 
     return evaluationResult;
 }
-{% endhighlight %}
+```
+{% endmarkdown %}
     </div>
 </div>
 
@@ -360,21 +379,24 @@ The game state, stored in the server-side rules objects, should provide the Phun
 </dl>
 <div class="tabs-content">
     <div class="content active" id="javascript-5">
-<p>The functions <code>getNextPlayerId</code> and <code>getNextMoveId</code> must be implemented.</p>
+{% markdown %}
+The functions `getNextPlayerId` and `getNextMoveId` must be implemented.
 
-{% highlight js %}
+```js
 var getNextPlayerId = function(state) {
     return state.nextPlayerId;
 };
 var getNextMoveId = function(state) {
     return state.nextMoveId;
 };
-{% endhighlight %}
+```
+{% endmarkdown %}
     </div>
     <div class="content" id="java-5">
-<p>The getters <code>getNextPlayerId</code> and <code>getNextMoveId</code> must be implemented.</p>
+{% markdown %}
+The getters `getNextPlayerId` and `getNextMoveId` must be implemented.
 
-{% highlight java %}
+```java
 @Override
 public Long getIdOfNextPlayer() {
     return gameState.getNextPlayerToPlay();
@@ -384,12 +406,14 @@ public Long getIdOfNextPlayer() {
 public Integer getIdOfNextMove() {
     return gameState.getNextMoveId();
 }
-{% endhighlight %}
+```
+{% endmarkdown %}
     </div>
     <div class="content" id="drools-5">
-<p>In Drools, you must create new queries to obtain the <code>nextPlayerId</code> and <code>nextMoveId</code>. The platform bridge between Java and Drools expect vars <code>$lastPlayerMoveDTO</code> and <code>$nextPlayer</code> to exist, please do not change their names.</p>
+{% markdown %}
+In Drools, you must create new queries to obtain the `nextPlayerId` and `nextMoveId`. The platform bridge between Java and Drools expect vars `$lastPlayerMoveDTO` and `$nextPlayer` to exist, please do not change their names.
 
-{% highlight text %}
+```
 query "findLastPlayerMoveDTO"
    $lastPlayerMoveDTO : PlayerMoveDTO($lowMoveId : moveId); 
    not PlayerMoveDTO(moveId > $lowMoveId);
@@ -401,10 +425,11 @@ query "findNextPlayer"
    not PlayerMoveDTO(moveId > $lowMoveId);
    $nextPlayer : Player(id!=$playerId) from $players; 
 end
-{% endhighlight %}
+```
+{% endmarkdown %}
     </div>
 </div>
 
-<hr />
+---
 
 What's next? Submit your game and the server-side rules to [pg-dev@present-technologies.com](mailto:pg-dev@present-technologies.com).
