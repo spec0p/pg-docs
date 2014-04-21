@@ -21,7 +21,8 @@
 }
 
 /* Override Foundation Magellan Sticky Nav properties */
-.sidebar[data-magellan-expedition] {
+.sidebar[data-magellan-expedition],
+.sidebar[data-magellan-expedition-clone] {
     padding: 0;
     min-width: inherit;
 }
