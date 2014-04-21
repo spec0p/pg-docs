@@ -6,7 +6,7 @@ description: Build HTML5 games for the Phune Gaming platform
 
 ---
 
-<div data-magellan-destination="sdk-js" data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
+<div data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
     <dl class="sub-nav">
         <dt>Jump to:</dt>
         <dd data-magellan-arrival="install"><a href="#install">Install</a></dd>

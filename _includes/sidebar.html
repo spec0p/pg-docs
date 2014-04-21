@@ -7,6 +7,12 @@
         <li><a href="{{ site.baseurl }}">Getting started</a></li>
     {% endif %}
 
+    {% if page.url == '/best-practices.html' %}
+        <li class="active"><a href="{{ site.baseurl }}best-practices.html">Best practices</a></li>
+    {% else %}
+        <li><a href="{{ site.baseurl }}best-practices.html">Best practices</a></li>
+    {% endif %}
+
     {% if page.url == '/install.html' %}
         <li class="active"><a href="{{ site.baseurl }}install.html">Install Phune Gaming</a></li>
     {% else %}
