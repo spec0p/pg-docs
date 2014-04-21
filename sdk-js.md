@@ -23,19 +23,27 @@ Before you start developing your game you need to install the JavaScript SDK.
 <a name="install"></a>
 <h3 data-magellan-destination="install">Install</h3>
 
-Install the JavaScript SDK with [Bower](http://bower.io/) from the command-line. From your game's root folder run:
+Download [the Phune Gaming SDK directly from GitHub](https://github.com/phune-gaming/pg-sdk-js/releases) and unzip it somewhere. Then copy the `dist` folder to the javascript folder for your game (i.e. `js` folder inside `your-game-id` folder).
+
+
+Alternatively, if you use [Bower](http://bower.io/), you can install the JavaScript SDK from the command-line. From the root of `your-game-id` folder run:
 
 ```
 bower install phune-gaming-sdk
 ```
 
-Add Phune Gaming SDK to your `index.html`:
+Add the Phune Gaming SDK to your `index.html`, such as:
+
+* For direct download installation
+
+```html
+<script src="js/PG.min.js"></script>
+```
+* For Bower installation
 
 ```html
 <script src="bower_components/phune-gaming-sdk/dist/PG.min.js"></script>
 ```
-
-Alternatively, for those who do not use Bower, you can directly [download the Phune Gaming SDK from GitHub](https://github.com/phune-gaming/pg-sdk-js/releases).
 
 You are now ready to start your game implementation. Please proceed to the [Getting Started](#getting-started) sub-section to find which callbacks your game needs to implement to process the messages sent by the platform, and to the [Public API](#public-api) sub-section to find out which methods you have available to send the game messages (e.g. moves) to the server.
 
