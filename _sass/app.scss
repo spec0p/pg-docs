@@ -27,6 +27,16 @@
     min-width: inherit;
 }
 
+/* Custom styles */
+table th,
+table td {
+    vertical-align: top;
+}
+
+.no-border {
+    border: none;
+}
+
 // Or selectively include components
 // @import
 //   "foundation/components/accordion",
