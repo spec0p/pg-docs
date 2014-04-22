@@ -94,15 +94,15 @@ config
 {% markdown %}
 Object defining the callback functions. The object must provide the following properties:
 
-* **onMatchPrepare** – `{function(player, opponent, deviceType)}` – MISSING_DESCRIPTION.
-* **onGameLobby** – `{function(allowedTime)}` – MISSING_DESCRIPTION.
-* **onMatchStart** – `{function(playerIdToPlayNext, timeToPlay)}` – MISSING_DESCRIPTION.
-* **onMoveValid** – `{function(playerIdWhoSentTheMove, playerIdToPlayNext, moveDetails, moveResults, gameResults)}` – MISSING_DESCRIPTION.
-* **onMoveInvalid** – `{function(playerIdWhoSentTheMove, playerIdToPlayNext)}` – MISSING_DESCRIPTION.
-* **onServerMessage** – `{function(playerIdWhoSentTheMessage, messageDetails, messageResults)}` – MISSING_DESCRIPTION.
-* **onPlayerMessage** – `{function(messageDetails)}` – MISSING_DESCRIPTION.
-* **onMatchEnd** – `{function(gameResults)}` – MISSING_DESCRIPTION.
-* **onKeyPress** – `{function(key)}` – MISSING_DESCRIPTION.
+* **onMatchPrepare** – `{function(player, opponent, deviceType)}` – The game should build the user interface and get ready to start playing.
+* **onGameLobby** – `{function(allowedTime)}` – The game can now configure additional match details.
+* **onMatchStart** – `{function(playerIdToPlayNext, timeToPlay)}` – The match start confirmation. Only now is the player allowed to play the game.
+* **onMoveValid** – `{function(playerIdWhoSentTheMove, playerIdToPlayNext, moveDetails, moveResults, gameResults)}` – Acknowledgment to a valid move.
+* **onMoveInvalid** – `{function(playerIdWhoSentTheMove, playerIdToPlayNext)}` – Acknowledgment to an invalid move.
+* **onServerMessage** – `{function(playerIdWhoSentTheMessage, messageDetails, messageResults)}` – A message from the server-side rules was received.
+* **onPlayerMessage** – `{function(messageDetails)}` – A message sent directly from another player was received.
+* **onMatchEnd** – `{function(gameResults)}` – Called by the platform when a match end event is received.
+* **onKeyPress** – `{function(key)}` – A keyboard or TV remote control key was pressed.
 {% endmarkdown %}
             </td>
         </tr>
