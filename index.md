@@ -29,7 +29,11 @@ In order to add a new game to Phune Gaming, we require that a developer send us 
 * The game distribution/binary
 * The server-side rules used for server validations
 
-**Note:** For the time being, Phune Gaming platform only supports turn based games with two players.
+<div class="panel callout radius">
+{% markdown %}
+For the time being, Phune Gaming platform only supports turn based games with two players.
+{% endmarkdown %}
+</div>
 
 To implement and test these components on your development machine, please follow the guides below:
 
@@ -46,7 +50,7 @@ Install Phune Gaming
     <li class="text-center">
         <a href="best-practices.html">
 {% markdown %}
-![Best practices](img/sdk-js.png)
+![Best practices](img/best-practices.png)
 
 Best practices
 {% endmarkdown %}

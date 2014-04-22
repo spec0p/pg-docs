@@ -7,11 +7,10 @@ description: Read the Phune Gaming best practices guidelines and apply them to y
 ---
 
 <div data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
-    <dl class="sub-nav">
-        <dt>Jump to:</dt>
-        <dd data-magellan-arrival="aspect-ratio"><a href="#aspect-ratio">Aspect ratio</a></dd>
-        <dd data-magellan-arrival="csp-restrictions"><a href="#csp-restrictions">CSP Restrictions</a></dd>
-    </dl>
+    <ul class="sub-nav">
+        <li data-magellan-arrival="aspect-ratio"><a href="#aspect-ratio">Aspect ratio</a></li>
+        <li data-magellan-arrival="csp-restrictions"><a href="#csp-restrictions">CSP Restrictions</a></li>
+    </ul>
 </div>
 
 ---
@@ -19,7 +18,46 @@ description: Read the Phune Gaming best practices guidelines and apply them to y
 <a name="aspect-ratio"></a>
 <h3 data-magellan-destination="aspect-ratio">Aspect ratio</h3>
 
-TODO: aspecto ratio...
+For a seamless integration with the Phune Gaming platform we recommend all the games to be implemented using the aspect ratio of **1.775** (same as iPhone 5).
+
+This is how a game looks on a smartphone device:
+
+<ul class="small-block-grid-1 medium-block-grid-2">
+    <li class="text-center">
+        <img id="" src="img/ratio/mobile.png" alt="Mobile aspect ration" />
+    </li>
+    <li class="text-center">
+        <img id="" src="img/ratio/mobile-hover.png" alt="Mobile aspect ration" />
+    </li>
+</ul>
+
+This is how a game looks on a TV set using the split-screen option:
+
+<ul class="small-block-grid-1 medium-block-grid-2">
+    <li class="text-center">
+        <img id="" src="img/ratio/tv-split.png" alt="TV split-screen aspect ration" />
+    </li>
+    <li class="text-center">
+        <img id="" src="img/ratio/tv-split-hover.png" alt="TV split-screen aspect ration" />
+    </li>
+</ul>
+
+This is how a game looks on a TV set using the full-screen option:
+
+<ul class="small-block-grid-1 medium-block-grid-2">
+    <li class="text-center">
+        <img id="" src="img/ratio/tv-full.png" alt="TV full-screen aspect ration" />
+    </li>
+    <li class="text-center">
+        <img id="" src="img/ratio/tv-full-hover.png" alt="TV full-screen aspect ration" />
+    </li>
+</ul>
+
+<div class="panel callout radius">
+{% markdown %}
+The game background can (and should) be enriched with additional elements when running in full screen mode on a TV set.
+{% endmarkdown %}
+</div>
 
 <a name="csp-restrictions"></a>
 <h3 data-magellan-destination="csp-restrictions">CSP restrictions</h3>

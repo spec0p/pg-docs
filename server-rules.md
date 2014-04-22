@@ -7,11 +7,10 @@ description: Do your validations on the server
 ---
 
 <div data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
-    <dl class="sub-nav">
-        <dt>Jump to:</dt>
-        <dd data-magellan-arrival="getting-started"><a href="#getting-started">Getting Started</a></dd>
-        <dd data-magellan-arrival="spi-docs"><a href="#spi-docs">SPI documentation</a></dd>
-    </dl>
+    <ul class="sub-nav">
+        <li data-magellan-arrival="getting-started"><a href="#getting-started">Getting Started</a></li>
+        <li data-magellan-arrival="spi-docs"><a href="#spi-docs">SPI documentation</a></li>
+    </ul>
 </div>
 
 ---
@@ -31,13 +30,17 @@ The server-side rules for your game must provide the following functionality:
 
 * Create the initial game state
 * Evaluate moves
-* Generate bot moves <sup>optional</sup>
-* Evaluate game-specific messages <sup>optional</sup>
+* Generate bot moves ^optional
+* Evaluate game-specific messages ^optional
 * Get info about the ongoing match
 
 Follow the SPI documentation below for implementation details.
 
-**Note:** The [JavaScript implementation of the server-side rules for the Tic-Tac-Toe game](https://github.com/phune-gaming/pg-tic-tac-toe/blob/master/src/js/gameRules.js) is freely available on GitHub.
+<div class="panel callout radius">
+{% markdown %}
+The [JavaScript implementation of the server-side rules for the Tic-Tac-Toe game](https://github.com/phune-gaming/pg-tic-tac-toe/blob/master/src/js/gameRules.js) is freely available on GitHub.
+{% endmarkdown %}
+</div>
 
 ---
 
@@ -158,9 +161,13 @@ var evaluateMove = function(state, playerId, moveId, content) {
     };
 };
 ```
-
-**Note:** The parameters `playerId` and `moveId` are automatically validated by the server before calling this function.
 {% endmarkdown %}
+
+        <div class="panel callout radius">
+{% markdown %}
+The parameters `playerId` and `moveId` are automatically validated by the server before calling this function.
+{% endmarkdown %}
+        </div>
     </div>
     <div class="content" id="java-2">
 {% markdown %}
@@ -270,7 +277,7 @@ when
     </div>
 </div>
 
-#### Generate bot moves <sup>optional</sup>
+#### Generate bot moves ^optional
 
 If bots are supported in a game, their moves must be generated.
 
@@ -317,13 +324,17 @@ public EvaluationResult createAndExecuteBotMove(Move prefilledMove) {
     return evaluationResult;
 }
 ```
-
-**Note:** `prefilledMove.setContent` must be called passing the move representation created for the bot as an argument.
 {% endmarkdown %}
+
+        <div class="panel callout radius">
+{% markdown %}
+`prefilledMove.setContent` must be called passing the move representation created for the bot as an argument.
+{% endmarkdown %}
+        </div>
     </div>
 </div>
 
-#### Evaluate game-specific messages <sup>optional</sup>
+#### Evaluate game-specific messages ^optional
 
 Games can send messages that are evaluated on the server and may change the game state.
 This type of messages may be used for game configuration.
