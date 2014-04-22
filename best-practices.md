@@ -59,6 +59,8 @@ The game background can (and should) be enriched with additional elements when r
 {% endmarkdown %}
 </div>
 
+---
+
 <a name="csp-restrictions"></a>
 <h3 data-magellan-destination="csp-restrictions">CSP restrictions</h3>
 

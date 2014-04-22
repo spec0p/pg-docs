@@ -134,6 +134,8 @@ end
     </div>
 </div>
 
+---
+
 #### Evaluate moves
 
 Every time a client sends a move, the move must be validated and the necessary changes should be applied to the game state.
@@ -277,6 +279,8 @@ when
     </div>
 </div>
 
+---
+
 #### Generate bot moves ^optional
 
 If bots are supported in a game, their moves must be generated.
@@ -334,6 +338,8 @@ public EvaluationResult createAndExecuteBotMove(Move prefilledMove) {
     </div>
 </div>
 
+---
+
 #### Evaluate game-specific messages ^optional
 
 Games can send messages that are evaluated on the server and may change the game state.
@@ -378,6 +384,8 @@ public EvaluationResult evaluateMessage(Message message) {
 {% endmarkdown %}
     </div>
 </div>
+
+---
 
 #### Get info about the ongoing match
 
