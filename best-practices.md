@@ -62,9 +62,23 @@ The game background can (and should) be enriched with additional elements when r
 <a name="csp-restrictions"></a>
 <h3 data-magellan-destination="csp-restrictions">CSP restrictions</h3>
 
-Phune Gaming fully supports [Firefox OS](https://developer.mozilla.org/en-US/Firefox_OS). However, unlike traditional web sites, [Open Web App](https://developer.mozilla.org/en/Apps) with [privileged or certified types](https://developer.mozilla.org/en-US/docs/Web/Apps/Packaged_apps) enforce a [CSP (content security policy)](https://developer.mozilla.org/en-US/docs/Security/CSP/Introducing_Content_Security_Policy) by default. This may cause quite a bit of existing code to break while porting and cause a significant amount of confusion if developers are unaware that the CSP exists.
+Phune Gaming fully supports [Firefox OS](https://developer.mozilla.org/en-US/Firefox_OS). However, Phune Gaming is distributed as a Firefox OS privileged type of app which enforces the [CSP (Content Security Policy)](https://developer.mozilla.org/en-US/docs/Security/CSP/Introducing_Content_Security_Policy) by default.
 
-TODO: CSP... https://developer.mozilla.org/en-US/Apps/CSP
+This may cause existing code to break. To guarantee your game is fully functional on Firefox OS, follow the best practices below during the development:
+
+* Include all JavaScript and CSS files locally in your game instead of loading them remotely.
+* Don't embed JavaScript in `<script>` tags in HTML files since the inline scripts are banned. You should place the code in an external JavaScript file and reference it via the `src` attribute. 
+* HTML event attributes like `onclick` and `onload` are also considered inline scripts, thus add them as event listeners in your JS files.
+* Don't assign content to the `innerHTML` property of dimanically created `<script>` tags.
+* Don't assign remote URLs to the `src` property of dinamically created `<script>` tags.
+* Don't use the `eval()` function or the `eval` operator.
+* Don't use the `javascript:` pseudo-protocol (e.g. `<a href="javascript:alert('foo')">`).
+* Don't use the `Function()` constructor.
+* Pass callable objects (i.e. functions) to `setTimeout` and `setInterval`. Strings and other data types are not callable objects.
+* Don't use plugins (e.g. `<object>`, `<embed>`, etc.).
+* Don't create Web Workers with remote URLs.
+
+For additional information consult the [applicable CSP restrictions for Firefox OS](https://developer.mozilla.org/en-US/Apps/CSP).
 
 ---
 
