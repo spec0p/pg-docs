@@ -33,6 +33,17 @@
 
     <li class="divider"></li>
 
+    <li class="heading">Miscellaneous</li>
+
+    {% if page.url == '/definitions.html' %}
+        <li class="active"><a href="{{ site.baseurl }}definitions.html">Definitions</a></li>
+    {% else %}
+        <li><a href="{{ site.baseurl }}definitions.html">Definitions</a></li>
+    {% endif %}
+
+    <li class="divider"></li>
+
     <li class="heading">Game example</li>
+
     <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
 </ul>

@@ -20,7 +20,11 @@ Phune Gaming supports multiple platforms including desktop, mobile and TV. Devel
 
 ### What knowledge do I need?
 
-To develop a game for Phune Gaming you will need to build two essential components: the game itself and server-side rules. For the game you can use your HTML, CSS and JavaScript skills and, if you prefer, you are free to use your favorite JavaScript game engine. The server-side rules are needed to manage the game states and validate the players' moves. The server-side rules can be written in JavaScript, Java or Drools.
+To develop a game for Phune Gaming you will need to build two essential components: the game itself and server-side rules.
+
+For the game you can use your HTML, CSS and JavaScript skills and, if you prefer, you are free to use your favorite JavaScript game engine. The server-side rules are needed to manage the game states and validate the players' moves. The server-side rules can be written in JavaScript, Java or Drools.
+
+Feel free to take a look at the [definitions list](definitions.html) to familiarize yourself with the terms we use throughout the documentation.
 
 ### How to submit a game?
 
