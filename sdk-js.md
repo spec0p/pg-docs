@@ -98,7 +98,7 @@ Object defining the callback functions. The object must provide the following pr
 * **onGameLobby** – `{function(allowedTime)}` – The game can now configure additional match details.
 * **onMatchStart** – `{function(playerIdToPlayNext, timeToPlay)}` – The match start confirmation. Only now is the player allowed to play the game.
 * **onMoveValid** – `{function(playerIdWhoSentTheMove, playerIdToPlayNext, moveDetails, moveResults, gameResults)}` – Acknowledgment to a valid move.
-* **onMoveInvalid** – `{function(playerIdWhoSentTheMove, playerIdToPlayNext)}` – Acknowledgment to an invalid move.
+* **onMoveInvalid** – `{function(playerIdToPlayNext, moveResults)}` – Acknowledgment to an invalid move sent by the current player.
 * **onServerMessage** – `{function(playerIdWhoSentTheMessage, messageDetails, messageResults)}` – A message from the server-side rules was received.
 * **onPlayerMessage** – `{function(messageDetails)}` – A message sent directly from another player was received.
 * **onMatchEnd** – `{function(gameResults)}` – Called by the platform when a match end event is received.
@@ -408,7 +408,7 @@ If a move does not pass the server-side rules validation, the game will be notif
 ##### Callback function
 
 ```js
-onMoveInvalid(playerIdWhoSentTheMove, playerIdToPlayNext);
+onMoveInvalid(playerIdToPlayNext, moveResults);
 ```
 
 ##### Parameters
@@ -425,23 +425,6 @@ onMoveInvalid(playerIdWhoSentTheMove, playerIdToPlayNext);
         <tr>
             <td>
 {% markdown %}
-playerIdWhoSentTheMove
-{% endmarkdown %}
-            </td>
-            <td>
-{% markdown %}
-`number`
-{% endmarkdown %}
-            </td>
-            <td>
-{% markdown %}
-The identifier of the player that sent the move.
-{% endmarkdown %}
-            </td>
-        </tr>
-        <tr>
-            <td>
-{% markdown %}
 playerIdToPlayNext
 {% endmarkdown %}
             </td>
@@ -453,6 +436,23 @@ playerIdToPlayNext
             <td>
 {% markdown %}
 The identifier of the player to whom the next move belongs.
+{% endmarkdown %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+{% markdown %}
+moveResults
+{% endmarkdown %}
+            </td>
+            <td>
+{% markdown %}
+`Object`
+{% endmarkdown %}
+            </td>
+            <td>
+{% markdown %}
+The results of the move validation.
 {% endmarkdown %}
             </td>
         </tr>
@@ -686,12 +686,24 @@ PG.ready();
 
 #### Game lobby
 
-If the game is configured on the server to require a configuration phase, the `onGameLobby` callback will be called to allow the game to send the required configuration back to the server by calling `PG.serverMessage`. When the match is ready to start, the game must inform the platform by calling `PG.exitGameLobby`.
+If the game is configured on the server to require a configuration phase, the `onGameLobby` callback will be called to allow the game to send the required configuration back to the server by calling `PG.sendMessageToServer`. When the match is ready to start, the game must inform the platform by calling `PG.exitGameLobby`.
 
 ##### Usage
 
 ```js
 PG.exitGameLobby();
+```
+
+---
+
+#### Show the platform menu
+
+The game must include a visual component which allows the user to have access to the platform menu. In order to show the menu this component must call the function `PG.showMenu`.
+
+##### Usage
+
+```js
+PG.showMenu();
 ```
 
 ---
@@ -703,7 +715,7 @@ If it is the current player's turn, the game should allow the player to make a m
 ##### Usage
 
 ```js
-PG.move(moveDetails, [validate]);
+PG.sendMove(moveDetails, [validate]);
 ```
 
 ##### Parameters
@@ -775,18 +787,6 @@ Validates the move before sending it to server.
 
 ---
 
-#### Show the platform menu
-
-The game must include a visual component which allows the user to have access to the platform menu. In order to show the menu this component must call the function `PG.showMenu`.
-
-##### Usage
-
-```js
-PG.showMenu();
-```
-
----
-
 #### Send messages to the server
 
 It is possible to send messages to be evaluated by the server-side rules. You can specify if you want the response to be sent to both players or only to you. Additionally, you can indicate if you want the messages to be processed by the server-side rules in order of arrival or in parallel.
@@ -794,7 +794,7 @@ It is possible to send messages to be evaluated by the server-side rules. You ca
 ##### Usage
 
 ```js
-PG.serverMessage(messageDetails, isAnswerPublic, [serializeRequest]);
+PG.sendMessageToServer(messageDetails, isAnswerPublic, [serializeRequest]);
 ```
 
 ##### Parameters
@@ -871,7 +871,7 @@ If the game requires to send messages to the opponent that should not be evaluat
 ##### Usage
 
 ```js
-PG.playerMessage(messageDetails, [sendTimeIntervalLimit]);
+PG.sendMessageToPlayer(messageDetails, [sendTimeIntervalLimit]);
 ```
 
 ##### Parameters

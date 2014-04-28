@@ -354,10 +354,10 @@ The evaluation of these messages is very similar to the evaluation of the moves,
 <div class="tabs-content">
     <div class="content active" id="javascript-4">
 {% markdown %}
-The `evaluateServerMessage` function will be called each time a message is sent by the game. It must return an object containing the message result and the new game state. It can also return `null` if it does not want a response to be sent to the game.
+The `evaluateGameMessage` function will be called each time a message is sent by the game. It must return an object containing the message result and the new game state. It can also return `null` if it does not want a response to be sent to the game.
 
 ```js
-function evaluateServerMessage(state, playerId, content) {
+function evaluateGameMessage(state, playerId, content) {
     return {
         result: 'message', // any message details can be passed here
         state: JSON.stringify(state)

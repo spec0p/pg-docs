@@ -62,7 +62,7 @@ var createBotMove = function(state, playerId) {
  * @param {Object} content The message details.
  * @returns {Object} An object containing the message response and the new game state.
  */
-var evaluateServerMessage = function(state, playerId, content) {
+var evaluateGameMessage = function(state, playerId, content) {
     // ...
 };
 

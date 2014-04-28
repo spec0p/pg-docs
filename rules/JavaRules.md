@@ -64,7 +64,7 @@ public interface JavaGameRules {
      * @param message the message
      * @return the result of the message evaluation
      */
-    EvaluationResult evaluateMessage(Message message);
+    EvaluationResult evaluateGameMessage(Message message);
 
     /**
      * Must return the id of the next player to play.
