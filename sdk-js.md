@@ -262,7 +262,7 @@ playerIdToPlayNext
             </td>
             <td>
 {% markdown %}
-`boolean`
+`number`
 {% endmarkdown %}
             </td>
             <td>
