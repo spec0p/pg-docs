@@ -97,11 +97,11 @@ Object defining the callback functions. The object must provide the following pr
 * **onMatchPrepare** – `{function(player, opponent, deviceType)}` – The game should build the user interface and get ready to start playing.
 * **onGameLobby** – `{function(allowedTime)}` – The game can now configure additional match details.
 * **onMatchStart** – `{function(playerIdToPlayNext, timeToPlay)}` – The match start confirmation. Only now is the player allowed to play the game.
-* **onMoveValid** – `{function(playerIdWhoSentTheMove, playerIdToPlayNext, moveDetails, moveResults, gameResults)}` – Acknowledgment to a valid move.
-* **onMoveInvalid** – `{function(playerIdToPlayNext, moveResults)}` – Acknowledgment to an invalid move sent by the current player.
-* **onServerMessage** – `{function(playerIdWhoSentTheMessage, messageDetails, messageResults)}` – A message from the server-side rules was received.
+* **onMoveValid** – `{function(playerIdWhoSentTheMove, playerIdToPlayNext, moveDetails, moveEvaluation, matchResult)}` – Acknowledgment to a valid move.
+* **onMoveInvalid** – `{function(playerIdToPlayNext, moveEvaluation)}` – Acknowledgment to an invalid move sent by the current player.
+* **onServerMessage** – `{function(playerIdWhoSentTheMessage, messageDetails, messageResult)}` – A message from the server-side rules was received.
 * **onPlayerMessage** – `{function(messageDetails)}` – A message sent directly from another player was received.
-* **onMatchEnd** – `{function(gameResults)}` – Called by the platform when a match end event is received.
+* **onMatchEnd** – `{function(matchResult)}` – Called by the platform when a match end event is received.
 * **onKeyPress** – `{function(key)}` – A keyboard or TV remote control key was pressed.
 {% endmarkdown %}
             </td>
@@ -295,13 +295,13 @@ Time allowed for the player to make a move.
 
 #### Moves handling and validation
 
-If a move is considered valid by the server-side rules, the server will respond with a confirmation message that will be handled by the `onMoveValid` callback function. Moves performed by the opponent will also be handled by this callback function. If a move ends the game, the `gameResults` parameter will indicate how the game ended.
+If a move is considered valid by the server-side rules, the server will respond with a confirmation message that will be handled by the `onMoveValid` callback function. Moves performed by the opponent will also be handled by this callback function. If a move ends the game, the `matchResult` parameter will indicate how the game ended.
 
 ##### Callback function
 
 ```js
 onMoveValid(playerIdWhoSentTheMove, playerIdToPlayNext, moveDetails,
-    moveResults, [gameResult]);
+    moveEvaluation, [matchResult]);
 ```
 
 ##### Parameters
@@ -369,7 +369,7 @@ The move details.
         <tr>
             <td>
 {% markdown %}
-moveResults
+moveEvaluation
 {% endmarkdown %}
             </td>
             <td>
@@ -379,14 +379,14 @@ moveResults
             </td>
             <td>
 {% markdown %}
-The results of the move validation.
+The result of the move validation.
 {% endmarkdown %}
             </td>
         </tr>
         <tr>
             <td>
 {% markdown %}
-gameResult _(optional)_
+matchResult _(optional)_
 {% endmarkdown %}
             </td>
             <td>
@@ -396,7 +396,7 @@ gameResult _(optional)_
             </td>
             <td>
 {% markdown %}
-If the move ended the game, this parameter returns the results. Possible values are `won`, `lost` or `draw`.
+If the move ended the match, this parameter returns the result. Possible values are `won`, `lost` or `draw`.
 {% endmarkdown %}
             </td>
         </tr>
@@ -408,7 +408,7 @@ If a move does not pass the server-side rules validation, the game will be notif
 ##### Callback function
 
 ```js
-onMoveInvalid(playerIdToPlayNext, moveResults);
+onMoveInvalid(playerIdToPlayNext, moveEvaluation);
 ```
 
 ##### Parameters
@@ -442,7 +442,7 @@ The identifier of the player to whom the next move belongs.
         <tr>
             <td>
 {% markdown %}
-moveResults
+moveEvaluation
 {% endmarkdown %}
             </td>
             <td>
@@ -452,7 +452,7 @@ moveResults
             </td>
             <td>
 {% markdown %}
-The results of the move validation.
+The result of the move validation.
 {% endmarkdown %}
             </td>
         </tr>
@@ -468,7 +468,7 @@ Responses to messages sent to the server will be processed by the `onServerMessa
 ##### Callback function
 
 ```js
-onServerMessage(playerIdWhoSentTheMessage, messageDetails, messageResults);
+onServerMessage(playerIdWhoSentTheMessage, messageDetails, messageResult);
 ```
 
 ##### Parameters
@@ -519,7 +519,7 @@ Message specific to a game and unknown to the platform. The developer is advised
         <tr>
             <td>
 {% markdown %}
-messageResults
+messageResult
 {% endmarkdown %}
             </td>
             <td>
@@ -588,7 +588,7 @@ When the game is over, the `onMatchEnd` callback function is called with the gam
 ##### Callback function
 
 ```js
-onMatchEnd(gameResult);
+onMatchEnd(matchResult);
 ```
 
 ##### Parameters
@@ -605,7 +605,7 @@ onMatchEnd(gameResult);
         <tr>
             <td>
 {% markdown %}
-gameResult
+matchResult
 {% endmarkdown %}
             </td>
             <td>
@@ -615,7 +615,7 @@ gameResult
             </td>
             <td>
 {% markdown %}
-The game results. Possible values are `won`, `lost` or `draw`.
+The match result. Possible values are `won`, `lost` or `draw`.
 {% endmarkdown %}
             </td>
         </tr>
