@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+            <meta name="description" content="Tutorial to walk you through the process of creating a HTML5 game and integrating it with the Phune Gaming platform." />
+        
+
+        
+            <title>Server-side rules in Java | Phune Gaming</title>
+        
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/app.css" />
+
+        <!-- Custom JS -->
+        <script src="/bower_components/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <nav class="top-bar docs-bar">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="http://www.phune.com/">Phune Gaming</a></h1>
+        </li>
+    </ul>
+    <section class="top-bar-section">
+        <ul class="right">
+            <li class="divider"></li>
+            <li class="has-form">
+                <a href="https://github.com/phune-gaming/pg-docs" class="small button">View source</a>
+            </li>
+        </ul>
+    </section>
+</nav>
+
+
+        <header>
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>Phune Gaming docs</h1>
+        </div>
+    </div>
+</header>
+
+
+        <main class="row">
+            <nav class="large-3 medium-4 columns">
+                <div class="sidebar show-for-small-only">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li><a href="/">Getting started</a></li>
+    
+
+    
+        <li><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+                <div class="sidebar show-for-medium-up" data-magellan-expedition="fixed">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li><a href="/">Getting started</a></li>
+    
+
+    
+        <li><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+            </nav>
+            <section class="large-9 medium-8 columns">
+                <h2>Server-side rules in Java</h2>
+                
+
+                <h3>JavaGameRules.java</h3>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">presenttechnologies</span><span class="o">.</span><span class="na">phunegaming</span><span class="o">.</span><span class="na">worker</span><span class="o">.</span><span class="na">rules</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">spi</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.presenttechnologies.phunegaming.worker.rules.java.spi.entities.EvaluationResult</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.presenttechnologies.phunegaming.worker.rules.java.spi.entities.Message</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.presenttechnologies.phunegaming.worker.rules.java.spi.entities.Move</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.presenttechnologies.phunegaming.worker.rules.java.spi.exceptions.PhuneMappingException</span><span class="o">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Interface to be implemented by rules created in Java.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">JavaGameRules</span> <span class="o">{</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * Must create a new clean state for a new match.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param players the id of the player that will play the match</span>
+<span class="cm">     */</span>
+    <span class="kt">void</span> <span class="nf">createStateForNewMatch</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">players</span><span class="o">);</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * Used by the worker to provide an Java rules implementation with a previous match state.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param oldState the match state that is to be restores</span>
+<span class="cm">     * @return &lt;b&gt;true&lt;/b&gt; if the operation completes successfully, &lt;b&gt;false&lt;/b&gt; otherwise</span>
+<span class="cm">     * @throws PhuneMappingException when mapping of the old game state fails</span>
+<span class="cm">     * @see JavaGameRules#getState()</span>
+<span class="cm">     */</span>
+    <span class="kt">void</span> <span class="nf">restoreState</span><span class="o">(</span><span class="n">String</span> <span class="n">oldState</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">PhuneMappingException</span><span class="o">;</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * Used by the worker to fetch a game match current state to be persisted. This state will be the one provided on</span>
+<span class="cm">     * the restore method.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @return the current game match state serialized as a string</span>
+<span class="cm">     * @throws PhuneMappingException when serialization of the current game fails</span>
+<span class="cm">     * @see JavaGameRules#restore(String)</span>
+<span class="cm">     */</span>
+    <span class="n">String</span> <span class="nf">getState</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">PhuneMappingException</span><span class="o">;</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * This method is responsible for receiving and evaluating a move received from a player. When the method returns</span>
+<span class="cm">     * the match state must be already updated.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param move the move to be evaluated by the rules</span>
+<span class="cm">     * @return the evaluated move</span>
+<span class="cm">     */</span>
+    <span class="n">EvaluationResult</span> <span class="nf">evaluateMove</span><span class="o">(</span><span class="n">Move</span> <span class="n">move</span><span class="o">);</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * This method is responsible for receiving and evaluating a generic message received from a player. When the method</span>
+<span class="cm">     * returns the match state must be already updated.&lt;br /&gt;</span>
+<span class="cm">     * &lt;strong&gt;Note:&lt;/strong&gt; this type of messages are not validated by the server. e.g: players and moves ordering</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param message the message</span>
+<span class="cm">     * @return the result of the message evaluation</span>
+<span class="cm">     */</span>
+    <span class="n">EvaluationResult</span> <span class="nf">evaluateGameMessage</span><span class="o">(</span><span class="n">Message</span> <span class="n">message</span><span class="o">);</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * Must return the id of the next player to play.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @return the id of the next player to play</span>
+<span class="cm">     */</span>
+    <span class="n">Long</span> <span class="nf">getIdOfNextPlayer</span><span class="o">();</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * Must return the id of the next move expected by the rules.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @return the id of the next move expected by the rules</span>
+<span class="cm">     */</span>
+    <span class="n">Integer</span> <span class="nf">getIdOfNextMove</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div>
+<h3>JavaBotRules.java</h3>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">presenttechnologies</span><span class="o">.</span><span class="na">phunegaming</span><span class="o">.</span><span class="na">worker</span><span class="o">.</span><span class="na">rules</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">spi</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.presenttechnologies.phunegaming.worker.rules.java.spi.entities.EvaluationResult</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.presenttechnologies.phunegaming.worker.rules.java.spi.entities.Move</span><span class="o">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Interface to be used by Java rules that support bot players.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">JavaBotRules</span> <span class="o">{</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * Must create a bot move and update the match state as if the play was actually made. This move won&#39;t be passed for</span>
+<span class="cm">     * evaluation.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param prefilledMove the bot move with some pre-filled info</span>
+<span class="cm">     * @return a new bot move</span>
+<span class="cm">     */</span>
+    <span class="n">EvaluationResult</span> <span class="nf">createAndExecuteBotMove</span><span class="o">(</span><span class="n">Move</span> <span class="n">prefilledMove</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div>
+            </section>
+        </main>
+
+        <footer>
+    <div class="row">
+        <div class="small-12 columns">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
+            <p>Copyright 2014 Present Technologies.<br />
+            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</p>
+        </div>
+    </div>
+</footer>
+
+
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/foundation/js/foundation.min.js"></script>
+        <script src="/js/app.js"></script>
+    </body>
+</html>

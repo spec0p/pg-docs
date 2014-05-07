@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+            <meta name="description" content="Read through the list of definitions to understand terms used throughout the documentation" />
+        
+
+        
+            <title>Definitions | Phune Gaming</title>
+        
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/app.css" />
+
+        <!-- Custom JS -->
+        <script src="/bower_components/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <nav class="top-bar docs-bar">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="http://www.phune.com/">Phune Gaming</a></h1>
+        </li>
+    </ul>
+    <section class="top-bar-section">
+        <ul class="right">
+            <li class="divider"></li>
+            <li class="has-form">
+                <a href="https://github.com/phune-gaming/pg-docs" class="small button">View source</a>
+            </li>
+        </ul>
+    </section>
+</nav>
+
+
+        <header>
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>Phune Gaming docs</h1>
+        </div>
+    </div>
+</header>
+
+
+        <main class="row">
+            <nav class="large-3 medium-4 columns">
+                <div class="sidebar show-for-small-only">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li><a href="/">Getting started</a></li>
+    
+
+    
+        <li><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li class="active"><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+                <div class="sidebar show-for-medium-up" data-magellan-expedition="fixed">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li><a href="/">Getting started</a></li>
+    
+
+    
+        <li><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li class="active"><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+            </nav>
+            <section class="large-9 medium-8 columns">
+                <h2>Definitions</h2>
+                
+                    <h3 class="subheader">Read through the list of definitions to understand terms used throughout the documentation</h3>
+                
+
+                <table><thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Game</td>
+<td>Phune Gaming is a platform for publishing games, thus the term game is used to describe the entity that is published on Phune Gaming for the users to play it like an article is published in a newspaper for the readers to read it. Each game has its own specific context and rules. Technically, a game is composed of a client component and a server component. The client component must communicate with the platform using the SDK (API), and the server component should follow the server-side rules (SPI) documentation.</td>
+</tr>
+<tr>
+<td>Match</td>
+<td>A match is a specific session of a game, thus a match has some data associated with it, such as: players who participate in the match, whether a player is a bot or not, which player should start playing first, whether the match ended with a victory of a player, a draw between them or was canceled by one of the players.</td>
+</tr>
+<tr>
+<td>Move</td>
+<td>Represents the player&#39;s decision how to play in the context of the game. The move contains information such as which player made the move and on which position on the board.</td>
+</tr>
+<tr>
+<td>Message</td>
+<td>There are two types of game messages. A player message is a message sent directly to the other player(s) in the match and is not processed by the server. A server message is a message sent by the game to the server, it&#39;s very similar to the evaluation of the moves, but skips the validation phase.</td>
+</tr>
+<tr>
+<td>Player</td>
+<td>A new player is generated for each match and contains data, such as a unique identifier (to distinguish the player from its opponent) and general information from the player&#39;s user profile in the platform.</td>
+</tr>
+<tr>
+<td>Matchmaking</td>
+<td>The phase between the time the user presses the play button and the match prepare phase. During the matchmaking phase the player is waiting to find an opponent to make a match.</td>
+</tr>
+<tr>
+<td>Configuration phase / Game lobby</td>
+<td>A game can be configured to have initial phase called game lobby. This phase can be used for message exchange between the client and the server-side rules to set some information relevant to the match before it starts.</td>
+</tr>
+<tr>
+<td>Game state</td>
+<td>From the server perspective a game state is the state of the game at a given point in time. It can be thought of as a snapshot of the game containing information about: the board, the players, nextMoveId and nextPlayerId.</td>
+</tr>
+<tr>
+<td>Game phase</td>
+<td>From the client perspective a game phase is a phase from the game&#39;s life-cycle (e.g. game lobby, match prepare, match start or match end).</td>
+</tr>
+<tr>
+<td>Platform menu</td>
+<td>A menu managed by the platform that contains the game&#39;s options during a match.</td>
+</tr>
+<tr>
+<td>Message / move evaluation</td>
+<td>Means that a message or a move is processed by the server.</td>
+</tr>
+<tr>
+<td>Move validation</td>
+<td>Verifies if a move is valid according to the game&#39;s server-side rules.</td>
+</tr>
+</tbody></table>
+
+            </section>
+        </main>
+
+        <footer>
+    <div class="row">
+        <div class="small-12 columns">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
+            <p>Copyright 2014 Present Technologies.<br />
+            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</p>
+        </div>
+    </div>
+</footer>
+
+
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/foundation/js/foundation.min.js"></script>
+        <script src="/js/app.js"></script>
+    </body>
+</html>

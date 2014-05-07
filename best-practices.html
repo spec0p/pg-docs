@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+            <meta name="description" content="Read the Phune Gaming best practices guidelines and apply them to your game development" />
+        
+
+        
+            <title>Best practices | Phune Gaming</title>
+        
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/app.css" />
+
+        <!-- Custom JS -->
+        <script src="/bower_components/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <nav class="top-bar docs-bar">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="http://www.phune.com/">Phune Gaming</a></h1>
+        </li>
+    </ul>
+    <section class="top-bar-section">
+        <ul class="right">
+            <li class="divider"></li>
+            <li class="has-form">
+                <a href="https://github.com/phune-gaming/pg-docs" class="small button">View source</a>
+            </li>
+        </ul>
+    </section>
+</nav>
+
+
+        <header>
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>Phune Gaming docs</h1>
+        </div>
+    </div>
+</header>
+
+
+        <main class="row">
+            <nav class="large-3 medium-4 columns">
+                <div class="sidebar show-for-small-only">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li><a href="/">Getting started</a></li>
+    
+
+    
+        <li class="active"><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+                <div class="sidebar show-for-medium-up" data-magellan-expedition="fixed">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li><a href="/">Getting started</a></li>
+    
+
+    
+        <li class="active"><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+            </nav>
+            <section class="large-9 medium-8 columns">
+                <h2>Best practices</h2>
+                
+                    <h3 class="subheader">Read the Phune Gaming best practices guidelines and apply them to your game development</h3>
+                
+
+                <hr>
+
+<div data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
+    <ul class="sub-nav">
+        <li data-magellan-arrival="aspect-ratio"><a href="#aspect-ratio">Aspect ratio</a></li>
+        <li data-magellan-arrival="csp-restrictions"><a href="#csp-restrictions">CSP Restrictions</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<p><a name="aspect-ratio"></a>
+<h3 data-magellan-destination="aspect-ratio">Aspect ratio</h3></p>
+
+<p>For a seamless integration with the Phune Gaming platform we recommend all the games to be implemented using the aspect ratio of <strong>1.775</strong> (same as iPhone 5).</p>
+
+<p>This is how a game looks on a smartphone device:</p>
+
+<ul class="small-block-grid-1 medium-block-grid-2">
+    <li class="text-center">
+        <img id="" src="img/ratio/mobile.png" alt="Mobile aspect ration" />
+    </li>
+    <li class="text-center">
+        <img id="" src="img/ratio/mobile-hover.png" alt="Mobile aspect ration" />
+    </li>
+</ul>
+
+<p>This is how a game looks on a TV set using the split-screen option:</p>
+
+<ul class="small-block-grid-1 medium-block-grid-2">
+    <li class="text-center">
+        <img id="" src="img/ratio/tv-split.png" alt="TV split-screen aspect ration" />
+    </li>
+    <li class="text-center">
+        <img id="" src="img/ratio/tv-split-hover.png" alt="TV split-screen aspect ration" />
+    </li>
+</ul>
+
+<p>This is how a game looks on a TV set using the full-screen option:</p>
+
+<ul class="small-block-grid-1 medium-block-grid-2">
+    <li class="text-center">
+        <img id="" src="img/ratio/tv-full.png" alt="TV full-screen aspect ration" />
+    </li>
+    <li class="text-center">
+        <img id="" src="img/ratio/tv-full-hover.png" alt="TV full-screen aspect ration" />
+    </li>
+</ul>
+
+<div class="panel callout radius">
+<p>The game background can (and should) be enriched with additional elements when running in full screen mode on a TV set.</p>
+
+</div>
+
+<hr>
+
+<p><a name="csp-restrictions"></a>
+<h3 data-magellan-destination="csp-restrictions">CSP restrictions</h3></p>
+
+<p>Phune Gaming fully supports <a href="https://developer.mozilla.org/en-US/Firefox_OS">Firefox OS</a>. However, Phune Gaming is distributed as a Firefox OS privileged type of app which enforces the <a href="https://developer.mozilla.org/en-US/docs/Security/CSP/Introducing_Content_Security_Policy">CSP (Content Security Policy)</a> by default.</p>
+
+<p>This may cause existing code to break. To guarantee your game is fully functional on Firefox OS, follow the best practices below during the development:</p>
+
+<ul>
+<li>Include all JavaScript and CSS files locally in your game instead of loading them remotely.</li>
+<li>Don&#39;t embed JavaScript in <code>&lt;script&gt;</code> tags in HTML files since the inline scripts are banned. You should place the code in an external JavaScript file and reference it via the <code>src</code> attribute. </li>
+<li>HTML event attributes like <code>onclick</code> and <code>onload</code> are also considered inline scripts, thus add them as event listeners in your JS files.</li>
+<li>Don&#39;t assign content to the <code>innerHTML</code> property of dimanically created <code>&lt;script&gt;</code> tags.</li>
+<li>Don&#39;t assign remote URLs to the <code>src</code> property of dinamically created <code>&lt;script&gt;</code> tags.</li>
+<li>Don&#39;t use the <code>eval()</code> function or the <code>eval</code> operator.</li>
+<li>Don&#39;t use the <code>javascript:</code> pseudo-protocol (e.g. <code>&lt;a href=&quot;javascript:alert(&#39;foo&#39;)&quot;&gt;</code>).</li>
+<li>Don&#39;t use the <code>Function()</code> constructor.</li>
+<li>Pass callable objects (i.e. functions) to <code>setTimeout</code> and <code>setInterval</code>. Strings and other data types are not callable objects.</li>
+<li>Don&#39;t use plugins (e.g. <code>&lt;object&gt;</code>, <code>&lt;embed&gt;</code>, etc.).</li>
+<li>Don&#39;t create Web Workers with remote URLs.</li>
+</ul>
+
+<p>For additional information consult the <a href="https://developer.mozilla.org/en-US/Apps/CSP">applicable CSP restrictions for Firefox OS</a>.</p>
+
+<hr>
+
+<p>What&#39;s next? Go to <a href="install.html">Install Phune Gaming</a> to learn how to install the Phune Gaming client platform.</p>
+
+            </section>
+        </main>
+
+        <footer>
+    <div class="row">
+        <div class="small-12 columns">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
+            <p>Copyright 2014 Present Technologies.<br />
+            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</p>
+        </div>
+    </div>
+</footer>
+
+
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/foundation/js/foundation.min.js"></script>
+        <script src="/js/app.js"></script>
+    </body>
+</html>

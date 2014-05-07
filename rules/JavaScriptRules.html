@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+            <meta name="description" content="Tutorial to walk you through the process of creating a HTML5 game and integrating it with the Phune Gaming platform." />
+        
+
+        
+            <title>Server-side rules in JavaScript | Phune Gaming</title>
+        
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/app.css" />
+
+        <!-- Custom JS -->
+        <script src="/bower_components/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <nav class="top-bar docs-bar">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="http://www.phune.com/">Phune Gaming</a></h1>
+        </li>
+    </ul>
+    <section class="top-bar-section">
+        <ul class="right">
+            <li class="divider"></li>
+            <li class="has-form">
+                <a href="https://github.com/phune-gaming/pg-docs" class="small button">View source</a>
+            </li>
+        </ul>
+    </section>
+</nav>
+
+
+        <header>
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>Phune Gaming docs</h1>
+        </div>
+    </div>
+</header>
+
+
+        <main class="row">
+            <nav class="large-3 medium-4 columns">
+                <div class="sidebar show-for-small-only">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li><a href="/">Getting started</a></li>
+    
+
+    
+        <li><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+                <div class="sidebar show-for-medium-up" data-magellan-expedition="fixed">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li><a href="/">Getting started</a></li>
+    
+
+    
+        <li><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+            </nav>
+            <section class="large-9 medium-8 columns">
+                <h2>Server-side rules in JavaScript</h2>
+                
+
+                <h3>JavaScriptRules.js</h3>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="cm">/**</span>
+<span class="cm"> * Create the game state representation and return it as a string containing: the players information, the id of the</span>
+<span class="cm"> * next player to play, the id of the next move and any other information relevant to the game. The players attribute</span>
+<span class="cm"> * is an array containing the players information, where each one is another array containing the player&#39;s id in the</span>
+<span class="cm"> * first position and a boolean indicating if the player is a bot in the second position.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param {array} players array containing the id of the player and if it is a bot or not.</span>
+<span class="cm"> * @param {number} nextPlayerId The id of the next player to play.</span>
+<span class="cm"> * @returns {string} The state of the match.</span>
+<span class="cm"> */</span>
+<span class="kd">var</span> <span class="nx">createStateForNewMatch</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">players</span><span class="p">,</span> <span class="nx">nextPlayerId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Move must be validated, and if valid, the necessary changes should be applied to the game state. It must return an</span>
+<span class="cm"> * object containing: the move result (possible values are &#39;valid&#39;, &#39;invalid&#39;, &#39;draw&#39; or &#39;winner&#39;), the content of the</span>
+<span class="cm"> * move that was evaluated and the new state of the game.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @abstract</span>
+<span class="cm"> * @param {Object} state The state of the match.</span>
+<span class="cm"> * @param {number} playerId The id of the player that wants to perform this move.</span>
+<span class="cm"> * @param {number} moveId The id of the move.</span>
+<span class="cm"> * @param {Object} content The move details.</span>
+<span class="cm"> * @returns {Object} The move result, content and game state.</span>
+<span class="cm"> */</span>
+<span class="kd">var</span> <span class="nx">evaluateMove</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">playerId</span><span class="p">,</span> <span class="nx">moveId</span><span class="p">,</span> <span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Generates a new move for the bot. It must return an object containing the content of the move that was created and</span>
+<span class="cm"> * the new state of the game.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @abstract</span>
+<span class="cm"> * @param {Object} state The state of the match.</span>
+<span class="cm"> * @param {number} playerId The id of the bot that will perform this move.</span>
+<span class="cm"> * @returns {Object} The move content and game state.</span>
+<span class="cm"> */</span>
+<span class="kd">var</span> <span class="nx">createBotMove</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">playerId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Messages sent by the game are evaluated by this function which may change the game state. It must return an object</span>
+<span class="cm"> * containing the message result and the new game state. It can also return null if it does not want a reply to be</span>
+<span class="cm"> * sent to the game.&lt;br /&gt;</span>
+<span class="cm"> * &lt;strong&gt;Note:&lt;/strong&gt; this kind of messages are not validated by the server (e.g. they do not validate players or</span>
+<span class="cm"> * moves ordering).</span>
+<span class="cm"> *</span>
+<span class="cm"> * @abstract</span>
+<span class="cm"> * @param {Object} state The state of the match.</span>
+<span class="cm"> * @param {number} playerId The id of the player that sent this message.</span>
+<span class="cm"> * @param {Object} content The message details.</span>
+<span class="cm"> * @returns {Object} An object containing the message response and the new game state.</span>
+<span class="cm"> */</span>
+<span class="kd">var</span> <span class="nx">evaluateGameMessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">playerId</span><span class="p">,</span> <span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Get the id of the next player to play the game and return it.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @abstract</span>
+<span class="cm"> * @param {Object} state The state of the match.</span>
+<span class="cm"> * @returns {number} The id of the next player to play the game.</span>
+<span class="cm"> */</span>
+<span class="kd">var</span> <span class="nx">getNextPlayerId</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Get the id of the next move and return it.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @abstract</span>
+<span class="cm"> * @param {Object} state The state of the match.</span>
+<span class="cm"> * @returns {number} The id of the next move.</span>
+<span class="cm"> */</span>
+<span class="kd">var</span> <span class="nx">getNextMoveId</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">};</span>
+</code></pre></div>
+            </section>
+        </main>
+
+        <footer>
+    <div class="row">
+        <div class="small-12 columns">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
+            <p>Copyright 2014 Present Technologies.<br />
+            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</p>
+        </div>
+    </div>
+</footer>
+
+
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/foundation/js/foundation.min.js"></script>
+        <script src="/js/app.js"></script>
+    </body>
+</html>

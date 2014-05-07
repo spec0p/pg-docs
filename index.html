@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+            <meta name="description" content="Learn how to create an HTML5 game and publish it on the Phune Gaming platform" />
+        
+
+        
+            <title>Developer's documentation | Phune Gaming</title>
+        
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/app.css" />
+
+        <!-- Custom JS -->
+        <script src="/bower_components/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <nav class="top-bar docs-bar">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="http://www.phune.com/">Phune Gaming</a></h1>
+        </li>
+    </ul>
+    <section class="top-bar-section">
+        <ul class="right">
+            <li class="divider"></li>
+            <li class="has-form">
+                <a href="https://github.com/phune-gaming/pg-docs" class="small button">View source</a>
+            </li>
+        </ul>
+    </section>
+</nav>
+
+
+        <header>
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>Phune Gaming docs</h1>
+        </div>
+    </div>
+</header>
+
+
+        <main class="row">
+            <nav class="large-3 medium-4 columns">
+                <div class="sidebar show-for-small-only">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li class="active"><a href="/">Getting started</a></li>
+    
+
+    
+        <li><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+                <div class="sidebar show-for-medium-up" data-magellan-expedition="fixed">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li class="active"><a href="/">Getting started</a></li>
+    
+
+    
+        <li><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+            </nav>
+            <section class="large-9 medium-8 columns">
+                <h2>Developer's documentation</h2>
+                
+                    <h3 class="subheader">Learn how to create an HTML5 game and publish it on the Phune Gaming platform</h3>
+                
+
+                <p>Welcome to the Phune Gaming game development documentation. Here you will find everything you need to know to develop games for the Phune Gaming platform.</p>
+
+<h3>What is Phune Gaming?</h3>
+
+<p>Phune Gaming is a social multiplayer HTML5 gaming platform which allows casual games to be played online against real users. The Phune Gaming platform is composed of three main components:</p>
+
+<ul>
+<li>A highly scalable and performant application server</li>
+<li>The Phune Gaming client platform</li>
+<li>And the games</li>
+</ul>
+
+<h3>Why should I develop games for Phune Gaming?</h3>
+
+<p>Phune Gaming supports multiple platforms including desktop, mobile and TV. Developing a game for Phune Gaming will allow you to reach a vast number of gamers who will be able to play your game no matter where they are or what device they use.</p>
+
+<h3>What knowledge do I need?</h3>
+
+<p>To develop a game for Phune Gaming you will need to build two essential components: the game itself and server-side rules.</p>
+
+<p>For the game you can use your HTML, CSS and JavaScript skills and, if you prefer, you are free to use your favorite JavaScript game engine. The server-side rules are needed to manage the game states and validate the players&#39; moves. The server-side rules can be written in JavaScript, Java or Drools.</p>
+
+<p>Feel free to take a look at the <a href="definitions.html">definitions list</a> to familiarize yourself with the terms we use throughout the documentation.</p>
+
+<h3>How to submit a game?</h3>
+
+<p>In order to add a new game to Phune Gaming, we require that a developer send us the following components:</p>
+
+<ul>
+<li>The game distribution/binary</li>
+<li>The server-side rules used for server validations</li>
+</ul>
+
+<div class="panel callout radius">
+<p>For the time being, Phune Gaming platform only supports turn based games with two players.</p>
+
+</div>
+
+<p>To implement and test these components on your development machine, please follow the guides below:</p>
+
+<ul class="small-block-grid-2">
+    <li class="text-center">
+        <a href="install.html">
+<p><img src="img/install.png" alt="Install Phune Gaming"></p>
+
+<p>Install Phune Gaming</p>
+
+        </a>
+    </li>
+    <li class="text-center">
+        <a href="best-practices.html">
+<p><img src="img/best-practices.png" alt="Best practices"></p>
+
+<p>Best practices</p>
+
+        </a>
+    </li>
+    <li class="text-center">
+        <a href="sdk-js.html">
+<p><img src="img/sdk-js.png" alt="Phune Gaming SDK for JavaScript"></p>
+
+<p>JavaScript SDK</p>
+
+        </a>
+    </li>
+    <li class="text-center">
+        <a href="server-rules.html">
+<p><img src="img/server-rules.png" alt="Phune Gaming Server-Side Rules"></p>
+
+<p>Server-Side Rules</p>
+
+        </a>
+    </li>
+</ul>
+
+<p>Alongside the documentation, feel free to have a look at the <a href="https://github.com/phune-gaming/pg-tic-tac-toe">Tic-Tac-Toe source code</a> for a complete game implementation example.</p>
+
+<p>Once you are ready, send us an email to <a href="mailto:pg-dev@present-technologies.com">pg-dev@present-technologies.com</a> with the two required components for a review and we will give you our feedback.</p>
+
+<p>Good luck!<br>
+Present Technologies</p>
+
+<hr>
+
+<p>What&#39;s next? Go to <a href="best-practices.html">Best practices</a> to find more about Phune Gaming&#39;s best practices for game development.</p>
+
+            </section>
+        </main>
+
+        <footer>
+    <div class="row">
+        <div class="small-12 columns">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
+            <p>Copyright 2014 Present Technologies.<br />
+            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</p>
+        </div>
+    </div>
+</footer>
+
+
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/foundation/js/foundation.min.js"></script>
+        <script src="/js/app.js"></script>
+    </body>
+</html>

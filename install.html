@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+            <meta name="description" content="Download and configure everything you need to get started" />
+        
+
+        
+            <title>Install Phune Gaming | Phune Gaming</title>
+        
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/app.css" />
+
+        <!-- Custom JS -->
+        <script src="/bower_components/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <nav class="top-bar docs-bar">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="http://www.phune.com/">Phune Gaming</a></h1>
+        </li>
+    </ul>
+    <section class="top-bar-section">
+        <ul class="right">
+            <li class="divider"></li>
+            <li class="has-form">
+                <a href="https://github.com/phune-gaming/pg-docs" class="small button">View source</a>
+            </li>
+        </ul>
+    </section>
+</nav>
+
+
+        <header>
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>Phune Gaming docs</h1>
+        </div>
+    </div>
+</header>
+
+
+        <main class="row">
+            <nav class="large-3 medium-4 columns">
+                <div class="sidebar show-for-small-only">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li><a href="/">Getting started</a></li>
+    
+
+    
+        <li><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li class="active"><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+                <div class="sidebar show-for-medium-up" data-magellan-expedition="fixed">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li><a href="/">Getting started</a></li>
+    
+
+    
+        <li><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li class="active"><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+            </nav>
+            <section class="large-9 medium-8 columns">
+                <h2>Install Phune Gaming</h2>
+                
+                    <h3 class="subheader">Download and configure everything you need to get started</h3>
+                
+
+                <hr>
+
+<div data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
+    <ul class="sub-nav">
+        <li data-magellan-arrival="request"><a href="#request">Developer's account</a></li>
+        <li data-magellan-arrival="download"><a href="#download">Download Phune</a></li>
+        <li data-magellan-arrival="install"><a href="#install">Install Phune</a></li>
+        <li data-magellan-arrival="test"><a href="#test">Test Phune</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<p>To download and install the Phune Gaming client platform complete the steps bellow:</p>
+
+<p><a name="request"></a>
+<h3 data-magellan-destination="request">Request a developer&#39;s account</h3></p>
+
+<p>Send an email to <a href="mailto:pg-dev@present-technologies.com">pg-dev@present-technologies.com</a> with the following information:</p>
+
+<div class="panel radius">
+<p><strong>Name:</strong> &quot;The name of the game&quot;,<br>
+<strong>Description:</strong> &quot;The description of the game&quot;<br>
+<strong>Move timeout:</strong> 60 (time available for each turn)<br>
+<strong>Bot:</strong> true/false (whether your game support bots or not)</p>
+
+</div>
+
+<p>In response you will receive an <code>id</code> for your game and the credentials for an SFTP account that you will need later to deploy the server-side rules on the server. The rules are used to manage the game states, to validate players&#39; moves or to generate moves for a bot.</p>
+
+<div class="panel callout radius">
+<p>You can always update the game details by sending us a new email and refering the game <code>id</code>.</p>
+
+</div>
+
+<hr>
+
+<p><a name="download"></a>
+<h3 data-magellan-destination="download">Download Phune Gaming</h3></p>
+
+<p>To download the Phune Gaming client platform you must accept the <a href="license-agreement.html">Present Technologies License Agreement for Phune Gaming</a>.</p>
+
+<p><input id="accept-license" type="checkbox" /><label for="accept-license">Accept License Agreement</label><br>
+<a id="download-platform" href="http://www.phune.com/assets/phune.zip">Download the Phune Gaming client platform</a></p>
+
+<hr>
+
+<p><a name="install"></a>
+<h3 data-magellan-destination="install">Install Phune Gaming</h3></p>
+
+<p>Install the Phune Gaming client platform by following the steps below:</p>
+
+<ol>
+<li>Unzip the platform into a local folder. </li>
+<li>Inside the platform create a new folder called <code>game</code>. </li>
+<li>Inside the folder <code>game</code>, create another folder named after the <code>id</code> from our email. This folder is where your game contents will reside.</li>
+<li>Finally, inside that folder create a new empty <code>index.html</code> file.</li>
+</ol>
+
+<hr>
+
+<p><a name="test"></a>
+<h3 data-magellan-destination="test">Test Phune Gaming</h3></p>
+
+<p>To test if your environment is set up properly, copy the platform contents to an HTTP server of your choice. Alternatively, if you have <a href="https://www.python.org/">Python</a> installed, you can simply run <code>python -m SimpleHTTPServer</code> with Python 2 or <code>python3 -m http.server</code> with Python 3, at the root of the platform&#39;s folder.</p>
+
+<p>Open your web browser and navigate to <code>localhost:port[/platform-location]</code> (i.e. <a href="http://localhost:8000/">localhost:8000</a> when using Python&#39;s <code>SimpleHTTPServer</code> module). You should see the Phune Gaming client platform, feel free to explore it. At this point you will not be able to start your game yet, since you need to implement the required callbacks described in the next section.</p>
+
+<hr>
+
+<p>What&#39;s next? Go to our <a href="sdk-js.html">JavaScript SDK</a> documentation to start developing your game.</p>
+
+            </section>
+        </main>
+
+        <footer>
+    <div class="row">
+        <div class="small-12 columns">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
+            <p>Copyright 2014 Present Technologies.<br />
+            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</p>
+        </div>
+    </div>
+</footer>
+
+
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/foundation/js/foundation.min.js"></script>
+        <script src="/js/app.js"></script>
+    </body>
+</html>

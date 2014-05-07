@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+            <meta name="description" content="Do your validations on the server" />
+        
+
+        
+            <title>Server-side rules | Phune Gaming</title>
+        
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/app.css" />
+
+        <!-- Custom JS -->
+        <script src="/bower_components/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <nav class="top-bar docs-bar">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="http://www.phune.com/">Phune Gaming</a></h1>
+        </li>
+    </ul>
+    <section class="top-bar-section">
+        <ul class="right">
+            <li class="divider"></li>
+            <li class="has-form">
+                <a href="https://github.com/phune-gaming/pg-docs" class="small button">View source</a>
+            </li>
+        </ul>
+    </section>
+</nav>
+
+
+        <header>
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>Phune Gaming docs</h1>
+        </div>
+    </div>
+</header>
+
+
+        <main class="row">
+            <nav class="large-3 medium-4 columns">
+                <div class="sidebar show-for-small-only">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li><a href="/">Getting started</a></li>
+    
+
+    
+        <li><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li class="active"><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+                <div class="sidebar show-for-medium-up" data-magellan-expedition="fixed">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li><a href="/">Getting started</a></li>
+    
+
+    
+        <li><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li class="active"><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+            </nav>
+            <section class="large-9 medium-8 columns">
+                <h2>Server-side rules</h2>
+                
+                    <h3 class="subheader">Do your validations on the server</h3>
+                
+
+                <hr>
+
+<div data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
+    <ul class="sub-nav">
+        <li data-magellan-arrival="getting-started"><a href="#getting-started">Getting Started</a></li>
+        <li data-magellan-arrival="spi-docs"><a href="#spi-docs">SPI documentation</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<p><a name="getting-started"></a>
+<h3 data-magellan-destination="getting-started">Getting Started</h3></p>
+
+<p>Phune Gaming requires the games to have a server-side component (aka server-side rules) which manages the game states, validates the players&#39; moves and optionally generates the moves for a bot. </p>
+
+<p>The server-side rules can be written in JavaScript, Java or Drools, and must implement our interface for the particular programming language:</p>
+
+<ul>
+<li>JavaScript: <a href="rules/JavaScriptRules.html">JavaScriptRules</a></li>
+<li>Java: <a href="rules/JavaRules.html">JavaRules</a></li>
+<li>Drools: <a href="rules/DroolsRules.html">DroolsRules</a></li>
+</ul>
+
+<p>The server-side rules for your game must provide the following functionality:</p>
+
+<ul>
+<li>Create the initial game state</li>
+<li>Evaluate moves</li>
+<li>Generate bot moves <sup>optional</sup></li>
+<li>Evaluate game-specific messages <sup>optional</sup></li>
+<li>Get info about the ongoing match</li>
+</ul>
+
+<p>Follow the SPI documentation below for implementation details.</p>
+
+<div class="panel callout radius">
+<p>The <a href="https://github.com/phune-gaming/pg-tic-tac-toe/blob/master/src/js/gameRules.js">JavaScript implementation of the server-side rules for the Tic-Tac-Toe game</a> is freely available on GitHub.</p>
+
+</div>
+
+<hr>
+
+<p><a name="spi-docs"></a>
+<h3 data-magellan-destination="spi-docs">SPI documentation</h3></p>
+
+<blockquote>Service Provider Interface (SPI) is an API intended to be implemented or extended by a third party. It can be used to enable framework extension and replaceable components.<cite>http://en.wikipedia.org/wiki/Service_provider_interface</cite></blockquote>
+
+<h4>Create the initial game state</h4>
+
+<p>When a new match is created, a representation of the game initial state must be defined. It must contain all the information that needs to be stored for the concrete match.</p>
+
+<dl class="tabs" data-tab>
+    <dd class="active"><a href="#javascript-1">JavaScript</a></dd>
+    <dd><a href="#java-1">Java</a></dd>
+    <dd><a href="#drools-1">Drools</a></dd>
+</dl>
+
+<div class="tabs-content">
+    <div class="content active" id="javascript-1">
+<p>The <code>createStateForNewMatch</code> function will be called to return the game state as a string containing: the players information, the id of the next player to play, the id of the next move and any other information relevant to the game. The <code>players</code> parameter is an array with information about the players. Each element in the <code>players</code> array is an array for one player, such as the first position holds the player&#39;s id and the second position holds a boolean value indicating whether the player is a bot or not.</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="kd">var</span> <span class="nx">createStateForNewMatch</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">players</span><span class="p">,</span> <span class="nx">nextPlayerId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+        <span class="nx">players</span><span class="o">:</span> <span class="nx">players</span><span class="p">,</span>
+        <span class="nx">nextPlayerId</span><span class="o">:</span> <span class="nx">nextPlayerId</span><span class="p">,</span>
+        <span class="nx">nextMoveId</span><span class="o">:</span> <span class="mi">1</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+    </div>
+    <div class="content" id="java-1">
+<p>The <code>createStateForNewMatch</code> is the method responsible for initializing and returning a new game state, which will be used in the match that is about to start.
+This method receives a list of ids of the players who will take part in the match and that most often needs to be saved on the match state for later usage by the server-side rules implementation.</p>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">createStateForNewMatch</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">players</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">gameState</span> <span class="o">=</span> <span class="n">newState</span><span class="o">(</span><span class="n">Board</span><span class="o">.</span><span class="na">Origin</span><span class="o">.</span><span class="na">TOP_LEFT</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">withPlayers</span><span class="o">(</span><span class="n">players</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The game state is game-specific and you may design it in the way that best fits your game. As an example the game state may look like the following:</p>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">GameState</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Long</span> <span class="n">nextPlayerToPlay</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">nextMoveId</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">players</span><span class="o">;</span>
+
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>One important aspect to keep in mind about the game states is that they are persisted on the server as strings. This means that you will need to convert your game state from/to a string every time the server invokes the methods <code>getState</code> and <code>restoreState</code>. However, you can delegate this work to the provided SPI by extending your server-side rules implementation from the abstract class <code>JavaGameRulesBase&lt;T&gt;</code>, where <code>&lt;T&gt;</code> is the class type of your game state, e.g:</p>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GameRules</span> <span class="kd">extends</span> <span class="n">JavaGameRulesBase</span><span class="o">&lt;</span><span class="n">BoardGameState</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">GameRules</span><span class="o">(){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">BoardGameState</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div>
+    </div>
+    <div class="content" id="drools-1">
+<p>When using Drools you must create a rule to setup the match. The initial match status must be <code>Status.CREATED</code> and after all the necessary setup is performed it should be changed to <code>Status.PLAYING</code>. The <code>lastMoveDate</code> in the match object should be set to <code>null</code>.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">rule &quot;match setup&quot;
+    when 
+        $m : Match(game.id == [The game id of the match], status == Status.CREATED, lastMoveDate == null);
+    then
+        $m.setStatus(Status.PLAYING);
+        update($m);
+        // setup other rules
+        [other facts related to the game]
+end
+</code></pre></div>
+    </div>
+</div>
+
+<hr>
+
+<h4>Evaluate moves</h4>
+
+<p>Every time a client sends a move, the move must be validated and the necessary changes should be applied to the game state.</p>
+
+<dl class="tabs" data-tab>
+    <dd class="active"><a href="#javascript-2">JavaScript</a></dd>
+    <dd><a href="#java-2">Java</a></dd>
+    <dd><a href="#drools-2">Drools</a></dd>
+</dl>
+
+<div class="tabs-content">
+    <div class="content active" id="javascript-2">
+<p>The <code>evaluateMove</code> function will be called to return an object containing the move result (possible values are <code>valid</code>, <code>invalid</code>, <code>draw</code> or <code>winner</code>), the content of the move that was evaluated and the new state of the game as a string.</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="kd">var</span> <span class="nx">evaluateMove</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">playerId</span><span class="p">,</span> <span class="nx">moveId</span><span class="p">,</span> <span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// validate the move, and apply the required changes to the game state</span>
+    <span class="c1">// ...</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="o">:</span> <span class="s1">&#39;valid&#39;</span><span class="p">,</span>
+        <span class="nx">evaluationContent</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">pos</span><span class="o">:</span> <span class="mi">0</span> <span class="c1">// any move details can be passed here</span>
+        <span class="p">},</span>
+        <span class="nx">state</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span>
+    <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
+
+        <div class="panel callout radius">
+<p>The parameters <code>playerId</code> and <code>moveId</code> are automatically validated by the server before calling this function.</p>
+
+        </div>
+    </div>
+    <div class="content" id="java-2">
+<p>The method responsible for evaluating and executing (if applicable) a move sent by a client is named <code>evaluateMove</code>. It receives a <code>Move</code> entity and must return an <code>EvaluationResult</code> object instantiated with information based on the result from the move evaluation.</p>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="n">EvaluationResult</span> <span class="nf">evaluateMove</span><span class="o">(</span><span class="n">Move</span> <span class="n">move</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">EvaluationResult</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EvaluationResult</span><span class="o">();</span>
+
+    <span class="c1">// Evaluate the move and if valid update the state...</span>
+    <span class="n">result</span><span class="o">.</span><span class="na">setEvaluationContent</span><span class="o">(</span><span class="s">&quot;Some result that the client understands&quot;</span><span class="o">);</span>
+    <span class="n">result</span><span class="o">.</span><span class="na">setEvaluationResultType</span><span class="o">(</span><span class="n">EvaluationResult</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">);</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The received <code>Move</code> entity contains the id of the player who performed the move, the id of the move and the move representation. This representation is specific for each game, which means that just like with the game state, you are free to design and use a move definition that best fits your game. As an example the move representation may look like the following:</p>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MoveContent</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">posX</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">posY</span><span class="o">;</span>
+
+    <span class="c1">// Getters and Setters ...</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The move is sent by the client as a string and you can interpret it as such or map it to the object defined by you and use it instead. This can be achieved by using the <code>mapContentTo</code> method available in the class <code>Move</code>.</p>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="n">MoveContent</span> <span class="n">content</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">move</span><span class="o">.</span><span class="na">mapContentTo</span><span class="o">(</span><span class="n">MoveContent</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">PhuneMappingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">result</span><span class="o">.</span><span class="na">setEvaluationResultType</span><span class="o">(</span><span class="n">EvaluationResult</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">INTERNAL_ERROR</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kt">int</span> <span class="n">line</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="na">getPosY</span><span class="o">();</span>
+<span class="kt">int</span> <span class="n">column</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="na">getPosX</span><span class="o">();</span>
+
+<span class="c1">// ...</span>
+</code></pre></div>
+    </div>
+    <div class="content" id="drools-2">
+<p>The moves are sent to the server in JSON format. In order to be interpreted by Drools they must be converted to an object defined inside Drools. For instance:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">declare Move
+    posX : int
+    posY : int
+end
+</code></pre></div>
+<p>The class name, <code>Move</code> in this example, should always be sent by the clients in the <code>className</code> variable so Drools can instantiate the correct object. This approach removes the need to create and compile Java POJOs for each move.</p>
+
+<p>The code snippet below demonstrates a possible implementation of the rules for: a valid move, an invalid move, and an ending move containing the winner info.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">rule &quot;invalid move&quot;
+// execute first
+salience 10
+    when
+        $match : Match(status == Status.PLAYING);
+        $pm : PlayerMoveDTO(evaluationResultType==null);
+        [other game-related facts to fire this rule]
+    then
+        // error
+        $pm.setEvaluationResultType(EvaluationResultType.FAILED_VALIDATION);
+        $pm.setEvaluationContent(&quot;A string to inform the failed reason&quot;);
+        // drop the invalid facts from working memory
+        retract([Some invalid fact]);
+        ...
+     end
+
+rule &quot;valid move&quot;
+when
+        $match : Match(status == Status.PLAYING);
+        $pm : PlayerMoveDTO(evaluationResultType==null);
+        // other game-related facts to fire this rule
+    then
+        modify($pm){
+            setEvaluationResultType(EvaluationResultType.SUCCESS);
+        }
+        // modify or insert new facts in a valid move
+     end
+
+rule &quot;winner move&quot;
+// execute first
+when
+        $match : Match(status == Status.PLAYING);
+        $pm : PlayerMoveDTO(evaluationResultType==null);
+        // other game-related facts to fire this rule
+    then
+        $pm.setWinnerPlayerId($playerId);
+        $pm.setEvaluationContent(&quot;String of the result of winning&quot;);
+        $pm.setEvaluationResultType(EvaluationResultType.MATCH_END_WINNER);
+     end
+</code></pre></div>
+    </div>
+</div>
+
+<hr>
+
+<h4>Generate bot moves <sup>optional</sup></h4>
+
+<p>If bots are supported in a game, their moves must be generated.</p>
+
+<dl class="tabs" data-tab>
+    <dd class="active"><a href="#javascript-3">JavaScript</a></dd>
+    <dd><a href="#java-3">Java</a></dd>
+</dl>
+
+<div class="tabs-content">
+    <div class="content active" id="javascript-3">
+<p>The <code>createBotMove</code> function will be called to generate a valid move for the bot. It returns an object containing the game state and the content of the move as strings. The <code>evaluateMove</code> function will be called automatically with the generated bot move, thus unlike the Java implementation, this move does not need to be applied to the game state.</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="kd">var</span> <span class="nx">createBotMove</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">playerId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">state</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">state</span><span class="p">),</span>
+        <span class="nx">content</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+            <span class="nx">pos</span><span class="o">:</span> <span class="mi">0</span> <span class="c1">// any move details can be passed here</span>
+        <span class="p">})</span>
+    <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
+    </div>
+    <div class="content" id="java-3">
+<p>In Java this is achieved by implementing the interface <code>JavaRulesBot</code>. This interface only defines one method named <code>createAndExecuteBotMove</code>. It receives a pre-filled move with some info like the move id and the bot id and must return an instantiated <code>EvaluationResult</code>. Since the <code>evaluateMove</code> function is not automatically called, the generated move must be added programmatically to the game state.</p>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="n">EvaluationResult</span> <span class="nf">createAndExecuteBotMove</span><span class="o">(</span><span class="n">Move</span> <span class="n">prefilledMove</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">EvaluationResult</span> <span class="n">evaluationResult</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EvaluationResult</span><span class="o">();</span>
+
+    <span class="c1">// Generate a bot move based on game-specific logic</span>
+    <span class="c1">// ...</span>
+
+    <span class="c1">// Make sure that the generated content is placed inside the pre-filled move </span>
+    <span class="n">prefilledMove</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">botMove</span><span class="o">);</span>
+
+    <span class="c1">// Evaluate the move and update the state </span>
+    <span class="c1">// ...</span>
+
+    <span class="k">return</span> <span class="n">evaluationResult</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>
+
+        <div class="panel callout radius">
+<p><code>prefilledMove.setContent</code> must be called passing the move representation created for the bot as an argument.</p>
+
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<h4>Evaluate game-specific messages <sup>optional</sup></h4>
+
+<p>Games can send messages that are evaluated on the server and may change the game state.
+This type of messages may be used for game configuration.
+For instance, on a game like Battleship, the client can use these messages to ask the server to generate a new set of ships at random positions.
+The evaluation of these messages is very similar to the evaluation of the moves, except for the parameters <code>playerId</code> and <code>moveId</code> which are not automatically validated by the server.</p>
+
+<dl class="tabs" data-tab>
+    <dd class="active"><a href="#javascript-4">JavaScript</a></dd>
+    <dd><a href="#java-4">Java</a></dd>
+</dl>
+
+<div class="tabs-content">
+    <div class="content active" id="javascript-4">
+<p>The <code>evaluateGameMessage</code> function will be called each time a message is sent by the game. It must return an object containing the message result and the new game state. It can also return <code>null</code> if it does not want a response to be sent to the game.</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="kd">function</span> <span class="nx">evaluateGameMessage</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">playerId</span><span class="p">,</span> <span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="o">:</span> <span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="c1">// any message details can be passed here</span>
+        <span class="nx">state</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+    </div>
+    <div class="content" id="java-4">
+<p>The method <code>evaluateMessage</code> receives a <code>Message</code> entity and must return an <code>EvaluationResult</code> instance.</p>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="n">EvaluationResult</span> <span class="nf">evaluateMessage</span><span class="o">(</span><span class="n">Message</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">EvaluationResult</span> <span class="n">evaluationResult</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EvaluationResult</span><span class="o">();</span>
+
+    <span class="c1">// Evaluate the message and set the evaluation result and content</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">return</span> <span class="n">evaluationResult</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>
+    </div>
+</div>
+
+<hr>
+
+<h4>Get info about the ongoing match</h4>
+
+<p>The game state, stored in the server-side rules objects, should provide the Phune Gaming platform with the information it requires (i.e. the id of the next player to play and the id of the next expected move).</p>
+
+<dl class="tabs" data-tab>
+    <dd class="active"><a href="#javascript-5">JavaScript</a></dd>
+    <dd><a href="#java-5">Java</a></dd>
+    <dd><a href="#drools-5">Drools</a></dd>
+</dl>
+
+<div class="tabs-content">
+    <div class="content active" id="javascript-5">
+<p>The functions <code>getNextPlayerId</code> and <code>getNextMoveId</code> must be implemented.</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="kd">var</span> <span class="nx">getNextPlayerId</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">state</span><span class="p">.</span><span class="nx">nextPlayerId</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">getNextMoveId</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">state</span><span class="p">.</span><span class="nx">nextMoveId</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+    </div>
+    <div class="content" id="java-5">
+<p>The getters <code>getNextPlayerId</code> and <code>getNextMoveId</code> must be implemented.</p>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="n">Long</span> <span class="nf">getIdOfNextPlayer</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">gameState</span><span class="o">.</span><span class="na">getNextPlayerToPlay</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getIdOfNextMove</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">gameState</span><span class="o">.</span><span class="na">getNextMoveId</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div>
+    </div>
+    <div class="content" id="drools-5">
+<p>In Drools, you must create new queries to obtain the <code>nextPlayerId</code> and <code>nextMoveId</code>. The platform bridge between Java and Drools expect vars <code>$lastPlayerMoveDTO</code> and <code>$nextPlayer</code> to exist, please do not change their names.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">query &quot;findLastPlayerMoveDTO&quot;
+   $lastPlayerMoveDTO : PlayerMoveDTO($lowMoveId : moveId); 
+   not PlayerMoveDTO(moveId &gt; $lowMoveId);
+end
+
+query &quot;findNextPlayer&quot;
+   Match($players : players);
+   PlayerMoveDTO($playerId : playerId, $lowMoveId : moveId); 
+   not PlayerMoveDTO(moveId &gt; $lowMoveId);
+   $nextPlayer : Player(id!=$playerId) from $players; 
+end
+</code></pre></div>
+    </div>
+</div>
+
+<hr>
+
+<p>What&#39;s next? Submit your game and the server-side rules to <a href="mailto:pg-dev@present-technologies.com">pg-dev@present-technologies.com</a>.</p>
+
+            </section>
+        </main>
+
+        <footer>
+    <div class="row">
+        <div class="small-12 columns">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
+            <p>Copyright 2014 Present Technologies.<br />
+            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</p>
+        </div>
+    </div>
+</footer>
+
+
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/foundation/js/foundation.min.js"></script>
+        <script src="/js/app.js"></script>
+    </body>
+</html>

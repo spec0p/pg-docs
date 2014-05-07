@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+            <meta name="description" content="Build HTML5 games for the Phune Gaming platform" />
+        
+
+        
+            <title>SDK for JavaScript | Phune Gaming</title>
+        
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/app.css" />
+
+        <!-- Custom JS -->
+        <script src="/bower_components/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <nav class="top-bar docs-bar">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="http://www.phune.com/">Phune Gaming</a></h1>
+        </li>
+    </ul>
+    <section class="top-bar-section">
+        <ul class="right">
+            <li class="divider"></li>
+            <li class="has-form">
+                <a href="https://github.com/phune-gaming/pg-docs" class="small button">View source</a>
+            </li>
+        </ul>
+    </section>
+</nav>
+
+
+        <header>
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>Phune Gaming docs</h1>
+        </div>
+    </div>
+</header>
+
+
+        <main class="row">
+            <nav class="large-3 medium-4 columns">
+                <div class="sidebar show-for-small-only">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li><a href="/">Getting started</a></li>
+    
+
+    
+        <li><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li class="active"><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+                <div class="sidebar show-for-medium-up" data-magellan-expedition="fixed">
+                    <ul class="side-nav">
+    <li class="heading">Guide</li>
+
+    
+        <li><a href="/">Getting started</a></li>
+    
+
+    
+        <li><a href="/best-practices.html">Best practices</a></li>
+    
+
+    
+        <li><a href="/install.html">Install Phune Gaming</a></li>
+    
+
+    
+        <li class="active"><a href="/sdk-js.html">JavaScript SDK</a></li>
+    
+
+    
+        <li><a href="/server-rules.html">Server-side rules</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Miscellaneous</li>
+
+    
+        <li><a href="/definitions.html">Definitions</a></li>
+    
+
+    <li class="divider"></li>
+
+    <li class="heading">Game example</li>
+
+    <li><a href="https://github.com/phune-gaming/pg-tic-tac-toe" target="_blank">Tic-Tac-Toe source code</a></li>
+</ul>
+
+                </div>
+            </nav>
+            <section class="large-9 medium-8 columns">
+                <h2>SDK for JavaScript</h2>
+                
+                    <h3 class="subheader">Build HTML5 games for the Phune Gaming platform</h3>
+                
+
+                <hr>
+
+<div data-magellan-expedition="fixed" data-options="destination_threshold: 65;">
+    <ul class="sub-nav">
+        <li data-magellan-arrival="install"><a href="#install">Install</a></li>
+        <li data-magellan-arrival="getting-started"><a href="#getting-started">Getting Started</a></li>
+        <li data-magellan-arrival="public-api"><a href="#public-api">Public API</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<p>Before you start developing your game you need to install the JavaScript SDK.  </p>
+
+<p><a name="install"></a>
+<h3 data-magellan-destination="install">Install</h3></p>
+
+<p>Download <a href="https://github.com/phune-gaming/pg-sdk-js/releases">the Phune Gaming SDK directly from GitHub</a> and unzip the contents of the <code>dist</code> folder into the JavaScript folder of your game (e.g. <code>js</code> folder).</p>
+
+<p>Alternatively, if you use <a href="http://bower.io/">Bower</a>, you can install the Phune Gaming JavaScript SDK from the command-line by running the command below from the root of your game folder:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">bower install phune-gaming-sdk
+</code></pre></div>
+<p>Add the Phune Gaming SDK to your <code>index.html</code> file as below.</p>
+
+<p>For direct download installation:</p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/PG.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
+<p>For Bower installation:</p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;bower_components/phune-gaming-sdk/dist/PG.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
+<p>You are now ready to start your game implementation. Please proceed to the <a href="#getting-started">Getting Started</a> sub-section to find which callbacks your game needs to implement to process the messages sent by the platform or to the <a href="#public-api">Public API</a> sub-section to find out which methods you have available to send the game messages (e.g. moves) to the server.</p>
+
+<div class="panel callout radius">
+<p>The <a href="https://github.com/phune-gaming/pg-tic-tac-toe">implementation of the game Tic-Tac-Toe</a> is freely available on GitHub.</p>
+
+</div>
+
+<hr>
+
+<p><a name="getting-started"></a>
+<h3 data-magellan-destination="getting-started">Getting Started</h3></p>
+
+<p>This section details the callbacks you must implement in your game to process the messages sent by the server.</p>
+
+<h4>Init</h4>
+
+<p>Initialize the JavaScript SDK by calling <code>PG.init</code> and defining the callback functions which will handle all matchmaking phases and the game events sent to your game by the platform.</p>
+
+<h5>Usage</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">PG</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+</code></pre></div>
+<h5>Parameters</h5>
+
+<table>
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p>config</p>
+
+            </td>
+            <td>
+<p><code>Object</code></p>
+
+            </td>
+            <td>
+<p>Object defining the callback functions. The object must provide the following properties:</p>
+
+<ul>
+<li><strong>onMatchPrepare</strong> – <code>{function(player, opponent, deviceType)}</code> – The game should build the user interface and get ready to start playing.</li>
+<li><strong>onGameLobby</strong> – <code>{function(allowedTime)}</code> – The game can now configure additional match details.</li>
+<li><strong>onMatchStart</strong> – <code>{function(playerIdToPlayNext, timeToPlay)}</code> – The match start confirmation. Only now is the player allowed to play the game.</li>
+<li><strong>onMoveValid</strong> – <code>{function(playerIdWhoSentTheMove, playerIdToPlayNext, moveDetails, moveEvaluation, matchResult)}</code> – Acknowledgment to a valid move.</li>
+<li><strong>onMoveInvalid</strong> – <code>{function(playerIdToPlayNext, moveEvaluation)}</code> – Acknowledgment to an invalid move sent by the current player.</li>
+<li><strong>onServerMessage</strong> – <code>{function(playerIdWhoSentTheMessage, messageDetails, messageResult)}</code> – A message from the server-side rules was received.</li>
+<li><strong>onPlayerMessage</strong> – <code>{function(messageDetails)}</code> – A message sent directly from another player was received.</li>
+<li><strong>onMatchEnd</strong> – <code>{function(matchResult)}</code> – Called by the platform when a match end event is received.</li>
+<li><strong>onKeyPress</strong> – <code>{function(key)}</code> – A keyboard or TV remote control key was pressed.</li>
+</ul>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p>The detailed description for each callback is presented below.</p>
+
+<hr>
+
+<h4>Match prepare</h4>
+
+<p>During the match preparation phase, the game should build the user interface and get ready to start playing. It is provided with the details of the player, the opponent and the type of device on which the game is running (<code>mobile</code> or <code>tv</code>).</p>
+
+<h5>Callback function</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">onMatchPrepare</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span> <span class="nx">opponent</span><span class="p">,</span> <span class="nx">deviceType</span><span class="p">);</span>
+</code></pre></div>
+<h5>Parameters</h5>
+
+<table>
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p>player</p>
+
+            </td>
+            <td>
+<p><code>Object</code></p>
+
+            </td>
+            <td>
+<p>The current player details.</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p>opponent</p>
+
+            </td>
+            <td>
+<p><code>Object</code></p>
+
+            </td>
+            <td>
+<p>The opponent details.</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p>deviceType</p>
+
+            </td>
+            <td>
+<p><code>string</code></p>
+
+            </td>
+            <td>
+<p>Indicates the type of the device where the game is running. Possible values are <code>MOBILE</code> and <code>TV</code>.</p>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h4>Game lobby</h4>
+
+<p>If the game needs to configure the match details before it is started, the <code>onGameLobby</code> callback function will be called to allow it to do so. It is provided with the time allowed for the player to configure the game and start the match.</p>
+
+<h5>Callback function</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">onGameLobby</span><span class="p">(</span><span class="nx">allowedTime</span><span class="p">);</span>
+</code></pre></div>
+<h5>Parameters</h5>
+
+<table>
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p>allowedTime</p>
+
+            </td>
+            <td>
+<p><code>number</code></p>
+
+            </td>
+            <td>
+<p>Time allowed for the player to configure the game and start the match.</p>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h4>Match start</h4>
+
+<p>When the match starts, the game will be informed of which player should play first and the time allowed for each player to make a move.</p>
+
+<h5>Callback function</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">onMatchStart</span><span class="p">(</span><span class="nx">playerIdToPlayNext</span><span class="p">,</span> <span class="nx">timeToPlay</span><span class="p">);</span>
+</code></pre></div>
+<h5>Parameters</h5>
+
+<table>
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p>playerIdToPlayNext</p>
+
+            </td>
+            <td>
+<p><code>number</code></p>
+
+            </td>
+            <td>
+<p>The identifier of the player to whom the next move belongs.</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p>timeToPlay</p>
+
+            </td>
+            <td>
+<p><code>number</code></p>
+
+            </td>
+            <td>
+<p>Time allowed for the player to make a move.</p>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h4>Moves handling and validation</h4>
+
+<p>If a move is considered valid by the server-side rules, the server will respond with a confirmation message that will be handled by the <code>onMoveValid</code> callback function. Moves performed by the opponent will also be handled by this callback function. If a move ends the game, the <code>matchResult</code> parameter will indicate how the game ended.</p>
+
+<h5>Callback function</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">onMoveValid</span><span class="p">(</span><span class="nx">playerIdWhoSentTheMove</span><span class="p">,</span> <span class="nx">playerIdToPlayNext</span><span class="p">,</span> <span class="nx">moveDetails</span><span class="p">,</span>
+    <span class="nx">moveEvaluation</span><span class="p">,</span> <span class="p">[</span><span class="nx">matchResult</span><span class="p">]);</span>
+</code></pre></div>
+<h5>Parameters</h5>
+
+<table>
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p>playerIdWhoSentTheMove</p>
+
+            </td>
+            <td>
+<p><code>number</code></p>
+
+            </td>
+            <td>
+<p>The identifier of the player that sent the move.</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p>playerIdToPlayNext</p>
+
+            </td>
+            <td>
+<p><code>number</code></p>
+
+            </td>
+            <td>
+<p>The identifier of the player to whom the next move belongs.</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p>moveDetails</p>
+
+            </td>
+            <td>
+<p><code>Object</code></p>
+
+            </td>
+            <td>
+<p>The move details.</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p>moveEvaluation</p>
+
+            </td>
+            <td>
+<p><code>Object</code></p>
+
+            </td>
+            <td>
+<p>The result of the move validation.</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p>matchResult <em>(optional)</em></p>
+
+            </td>
+            <td>
+<p><code>string</code></p>
+
+            </td>
+            <td>
+<p>If the move ended the match, this parameter returns the result. Possible values are <code>won</code>, <code>lost</code> or <code>draw</code>.</p>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p>If a move does not pass the server-side rules validation, the game will be notified by the <code>onMoveInvalid</code> callback function.</p>
+
+<h5>Callback function</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">onMoveInvalid</span><span class="p">(</span><span class="nx">playerIdToPlayNext</span><span class="p">,</span> <span class="nx">moveEvaluation</span><span class="p">);</span>
+</code></pre></div>
+<h5>Parameters</h5>
+
+<table>
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p>playerIdToPlayNext</p>
+
+            </td>
+            <td>
+<p><code>number</code></p>
+
+            </td>
+            <td>
+<p>The identifier of the player to whom the next move belongs.</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p>moveEvaluation</p>
+
+            </td>
+            <td>
+<p><code>Object</code></p>
+
+            </td>
+            <td>
+<p>The result of the move validation.</p>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h4>Handle messages from the server</h4>
+
+<p>Responses to messages sent to the server will be processed by the <code>onServerMessage</code> callback function.</p>
+
+<h5>Callback function</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">onServerMessage</span><span class="p">(</span><span class="nx">playerIdWhoSentTheMessage</span><span class="p">,</span> <span class="nx">messageDetails</span><span class="p">,</span> <span class="nx">messageResult</span><span class="p">);</span>
+</code></pre></div>
+<h5>Parameters</h5>
+
+<table>
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p>playerIdWhoSentTheMessage</p>
+
+            </td>
+            <td>
+<p><code>number</code></p>
+
+            </td>
+            <td>
+<p>The identifier of the player that sent the message.</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p>messageDetails</p>
+
+            </td>
+            <td>
+<p><code>Object</code></p>
+
+            </td>
+            <td>
+<p>Message specific to a game and unknown to the platform. The developer is advised to have multiple message types with different bodies in order to achieve different goals.</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p>messageResult</p>
+
+            </td>
+            <td>
+<p><code>Object</code></p>
+
+            </td>
+            <td>
+<p>The result returned by the server-side rules.</p>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h4>Handle messages from an opponent</h4>
+
+<p>Messages sent by the opponent will be processed by the <code>onPlayerMessage</code> callback function.</p>
+
+<h5>Callback function</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">onPlayerMessage</span><span class="p">(</span><span class="nx">messageDetails</span><span class="p">);</span>
+</code></pre></div>
+<h5>Parameters</h5>
+
+<table>
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p>messageDetails</p>
+
+            </td>
+            <td>
+<p><code>Object</code></p>
+
+            </td>
+            <td>
+<p>Message specific to a game and unknown to the platform. The developer is advised to have multiple message types with different bodies in order to achieve different goals.</p>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h4>Match end</h4>
+
+<p>When the game is over, the <code>onMatchEnd</code> callback function is called with the game result.</p>
+
+<h5>Callback function</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">onMatchEnd</span><span class="p">(</span><span class="nx">matchResult</span><span class="p">);</span>
+</code></pre></div>
+<h5>Parameters</h5>
+
+<table>
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p>matchResult</p>
+
+            </td>
+            <td>
+<p><code>string</code></p>
+
+            </td>
+            <td>
+<p>The match result. Possible values are <code>won</code>, <code>lost</code> or <code>draw</code>.</p>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h4>TV remote control input handling</h4>
+
+<p>On TV environment, the <code>onKeyPress</code> callback handles the remote control keys that were pressed.&#39;enter&#39;.</p>
+
+<h5>Callback function</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">onKeyPress</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+</code></pre></div>
+<h5>Parameters</h5>
+
+<table>
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p>key</p>
+
+            </td>
+            <td>
+<p><code>string</code></p>
+
+            </td>
+            <td>
+<p>The key that was pressed. Possible values are <code>left</code>, <code>right</code>, <code>up</code>, <code>down</code> or <code>enter</code>.</p>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<p><a name="public-api"></a>
+<h3 data-magellan-destination="public-api">Public API</h3></p>
+
+<p>The Phune Gaming SDK provides an <a href="http://phune-gaming.github.io/pg-sdk-js/">API</a> which allows the game to send messages to the platform and to the server.</p>
+
+<h4>Match start</h4>
+
+<p>During the match preparation phase (<code>onMatchPrepare</code> callback) the game must inform the platform when it is ready to be shown to the user by calling <code>PG.ready</code>.</p>
+
+<h5>Usage</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">PG</span><span class="p">.</span><span class="nx">ready</span><span class="p">();</span>
+</code></pre></div>
+<hr>
+
+<h4>Game lobby</h4>
+
+<p>If the game is configured on the server to require a configuration phase, the <code>onGameLobby</code> callback will be called to allow the game to send the required configuration back to the server by calling <code>PG.sendMessageToServer</code>. When the match is ready to start, the game must inform the platform by calling <code>PG.exitGameLobby</code>.</p>
+
+<h5>Usage</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">PG</span><span class="p">.</span><span class="nx">exitGameLobby</span><span class="p">();</span>
+</code></pre></div>
+<hr>
+
+<h4>Show the platform menu</h4>
+
+<p>The game must include a visual component which allows the user to have access to the platform menu. In order to show the menu this component must call the function <code>PG.showMenu</code>.</p>
+
+<h5>Usage</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">PG</span><span class="p">.</span><span class="nx">showMenu</span><span class="p">();</span>
+</code></pre></div>
+<hr>
+
+<h4>Perform a move</h4>
+
+<p>If it is the current player&#39;s turn, the game should allow the player to make a move and then send it to the platform. Optionally, you can specify a validate function that accepts the move object as a parameter and validates it before sending it to the server. This prevents additional round-trips to the server for invalid moves, thus making the game a lot more responsive.</p>
+
+<h5>Usage</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">PG</span><span class="p">.</span><span class="nx">sendMove</span><span class="p">(</span><span class="nx">moveDetails</span><span class="p">,</span> <span class="p">[</span><span class="nx">validate</span><span class="p">]);</span>
+</code></pre></div>
+<h5>Parameters</h5>
+
+<table>
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p>moveDetails</p>
+
+            </td>
+            <td>
+<p><code>Object</code></p>
+
+            </td>
+            <td>
+<p>The move details.</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p>validate <em>(optional)</em></p>
+
+            </td>
+            <td>
+<p><code>function(moveDetails)</code></p>
+
+            </td>
+            <td>
+<p>Validates the move before sending it to server.</p>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h5>Returns</h5>
+
+<table class="no-border">
+    <tbody>
+        <tr>
+            <td>
+<p><code>boolean</code></p>
+
+            </td>
+            <td>
+<p><code>true</code> when the move is valid or when no validation function was provided, otherwise <code>false</code>.</p>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h4>Send messages to the server</h4>
+
+<p>It is possible to send messages to be evaluated by the server-side rules. You can specify if you want the response to be sent to both players or only to you. Additionally, you can indicate if you want the messages to be processed by the server-side rules in order of arrival or in parallel.</p>
+
+<h5>Usage</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">PG</span><span class="p">.</span><span class="nx">sendMessageToServer</span><span class="p">(</span><span class="nx">messageDetails</span><span class="p">,</span> <span class="nx">isAnswerPublic</span><span class="p">,</span> <span class="p">[</span><span class="nx">serializeRequest</span><span class="p">]);</span>
+</code></pre></div>
+<h5>Parameters</h5>
+
+<table>
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p>messageDetails</p>
+
+            </td>
+            <td>
+<p><code>Object</code></p>
+
+            </td>
+            <td>
+<p>The content of the message to be sent.</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p>isAnswerPublic</p>
+
+            </td>
+            <td>
+<p><code>boolean</code></p>
+
+            </td>
+            <td>
+<p>Whether the reply from the server&#39;s rules should be sent to all players or not.</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p>serializeRequest <em>(optional)</em></p>
+
+            </td>
+            <td>
+<p><code>boolean</code></p>
+
+            </td>
+            <td>
+<p>Whether the messages should be processed in order of arrival or can be executed in parallel.</p>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h4>Send messages to the opponent</h4>
+
+<p>If the game requires to send messages to the opponent that should not be evaluated by the server-side rules, it can use this function. Optionally, you can specify if you do not want to allow more than one message to be sent within a specified time in milliseconds. In this case, if the function is called more than once during the specified interval, only the last message will be sent.</p>
+
+<h5>Usage</h5>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">PG</span><span class="p">.</span><span class="nx">sendMessageToPlayer</span><span class="p">(</span><span class="nx">messageDetails</span><span class="p">,</span> <span class="p">[</span><span class="nx">sendTimeIntervalLimit</span><span class="p">]);</span>
+</code></pre></div>
+<h5>Parameters</h5>
+
+<table>
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p>messageDetails</p>
+
+            </td>
+            <td>
+<p><code>Object</code></p>
+
+            </td>
+            <td>
+<p>The content of the message to be sent.</p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p>sendTimeIntervalLimit <em>(optional)</em></p>
+
+            </td>
+            <td>
+<p><code>number</code></p>
+
+            </td>
+            <td>
+<p>Do not allow sending more than one message within the specified time in milliseconds. If this function is called more than once during this interval only the last message will be sent.</p>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<p>What&#39;s next? Go to <a href="server-rules.html">Server rules</a> to find out how to do your game validations on the server.</p>
+
+            </section>
+        </main>
+
+        <footer>
+    <div class="row">
+        <div class="small-12 columns">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
+            <p>Copyright 2014 Present Technologies.<br />
+            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</p>
+        </div>
+    </div>
+</footer>
+
+
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/foundation/js/foundation.min.js"></script>
+        <script src="/js/app.js"></script>
+    </body>
+</html>
