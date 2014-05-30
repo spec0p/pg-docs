@@ -142,7 +142,7 @@ Every time a client sends a move, the move must be validated and the necessary c
 
 1. Is the `matchId` valid?
 2. Has the match ended by timeout?
-3. Is player who sent the move actually a player of this match?
+3. Is player who sent the move actually a player in this match?
 4. Is this player turn?
 5. Is the sent move in the correct order?
 
