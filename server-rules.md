@@ -344,7 +344,8 @@ public EvaluationResult createAndExecuteBotMove(Move prefilledMove) {
 Games can send messages that are evaluated on the server and may change the game state.
 This type of messages may be used for game configuration.
 For instance, on a game like Battleship, the client can use these messages to ask the server to generate a new set of ships at random positions.
-The evaluation of these messages is very similar to the evaluation of the moves, except for the parameters `playerId` and `moveId` which are not automatically validated by the server.
+The evaluation of these messages is very similar to the evaluation of the normal moves, except for the automatically validations, here the only validation made is:
+1. Is the `matchId` valid?
 
 <dl class="tabs" data-tab>
     <dd class="active"><a href="#javascript-4">JavaScript</a></dd>
