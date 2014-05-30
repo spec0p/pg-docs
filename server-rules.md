@@ -138,7 +138,15 @@ end
 
 #### Evaluate moves
 
-Every time a client sends a move, the move must be validated and the necessary changes should be applied to the game state.
+Every time a client sends a move, the move must be validated and the necessary changes should be applied to the game state. The following validations are made automatically by the server:
+
+1. Is the `matchId` valid?
+2. Has the match ended by timeout?
+3. Is player who sent the move actually a player of this match?
+4. Is this player turn?
+5. Is the sent move in the correct order?
+
+If any of the validations above fail, an error message is automatically sent to the client, freeing you from implementing them in your game rules.
 
 <dl class="tabs" data-tab>
     <dd class="active"><a href="#javascript-2">JavaScript</a></dd>
@@ -163,16 +171,7 @@ var evaluateMove = function(state, playerId, moveId, content) {
     };
 };
 ```
-{% endmarkdown %}
 
-        <div class="panel callout radius">
-{% markdown %}
-The parameters `playerId` and `moveId` are automatically validated by the server before calling this function.
-{% endmarkdown %}
-        </div>
-    </div>
-    <div class="content" id="java-2">
-{% markdown %}
 The method responsible for evaluating and executing (if applicable) a move sent by a client is named `evaluateMove`. It receives a `Move` entity and must return an `EvaluationResult` object instantiated with information based on the result from the move evaluation.
 
 ```java
